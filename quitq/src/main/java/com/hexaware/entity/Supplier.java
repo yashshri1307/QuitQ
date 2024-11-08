@@ -1,5 +1,7 @@
 package com.hexaware.entity;
 
+import java.util.Date;
+
 public class Supplier {
 	
 	private int supplier_id;
@@ -9,13 +11,14 @@ public class Supplier {
 	private String mob_no;
 	private String company_name;
 	private String address;
+	private Date created_at;
 	
 	public Supplier() {
 		super();
 	}
 
 	public Supplier(int supplier_id, String name, String email, String password, String mob_no, String company_name,
-			String address) {
+			String address, Date created_at) {
 		super();
 		this.supplier_id = supplier_id;
 		this.name = name;
@@ -24,7 +27,9 @@ public class Supplier {
 		this.mob_no = mob_no;
 		this.company_name = company_name;
 		this.address = address;
+		this.created_at = created_at;
 	}
+
 
 	public int getSupplier_id() {
 		return supplier_id;
@@ -82,15 +87,19 @@ public class Supplier {
 		this.address = address;
 	}
 
+	public Date getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+
 	@Override
 	public String toString() {
 		return "Supplier [supplier_id=" + supplier_id + ", name=" + name + ", email=" + email + ", password=" + password
-				+ ", mob_no=" + mob_no + ", company_name=" + company_name + ", address=" + address + "]";
+				+ ", mob_no=" + mob_no + ", company_name=" + company_name + ", address=" + address + ", created_at="
+				+ created_at + "]";
 	}
-	
-	
-	
-	
-	
 
 }

@@ -1,5 +1,7 @@
 package com.hexaware.entity;
 
+import java.util.Date;
+
 public class Product {
 
 	private int product_id;
@@ -9,14 +11,14 @@ public class Product {
 	private double price;
 	private int stock;
 	private String description;
+	private Date created_at;
 	
 	public Product() {
 		super();
 	}
-	
 
 	public Product(int product_id, int supplier_id, String name, String category, double price, int stock,
-			String description) {
+			String description, Date created_at) {
 		super();
 		this.product_id = product_id;
 		this.supplier_id = supplier_id;
@@ -25,8 +27,8 @@ public class Product {
 		this.price = price;
 		this.stock = stock;
 		this.description = description;
+		this.created_at = created_at;
 	}
-
 
 	public int getProduct_id() {
 		return product_id;
@@ -84,15 +86,20 @@ public class Product {
 		this.description = description;
 	}
 
+	public Date getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
 
 	@Override
 	public String toString() {
 		return "Product [product_id=" + product_id + ", supplier_id=" + supplier_id + ", name=" + name + ", category="
-				+ category + ", price=" + price + ", stock=" + stock + ", description=" + description + "]";
+				+ category + ", price=" + price + ", stock=" + stock + ", description=" + description + ", created_at="
+				+ created_at + "]";
 	}
-	
-	
-	
-	
+
 	
 }
