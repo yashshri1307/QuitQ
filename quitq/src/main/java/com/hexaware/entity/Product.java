@@ -4,46 +4,46 @@ import java.util.Date;
 
 public class Product {
 
-	private int product_id;
-	private int supplier_id;
+	private int productId;
+	private int supplierId;
 	private String name;
 	private String category;
 	private double price;
 	private int stock;
 	private String description;
-	private Date created_at;
+	private Date createdAt;
 	
 	public Product() {
 		super();
 	}
 
-	public Product(int product_id, int supplier_id, String name, String category, double price, int stock,
-			String description, Date created_at) {
+	public Product(int productId, int supplierId, String name, String category, double price, int stock,
+			String description, Date createdAt) {
 		super();
-		this.product_id = product_id;
-		this.supplier_id = supplier_id;
+		this.productId = productId;
+		this.supplierId = supplierId;
 		this.name = name;
 		this.category = category;
 		this.price = price;
 		this.stock = stock;
 		this.description = description;
-		this.created_at = created_at;
+		this.createdAt = createdAt;
 	}
 
-	public int getProduct_id() {
-		return product_id;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
-	public int getSupplier_id() {
-		return supplier_id;
+	public int getSupplierId() {
+		return supplierId;
 	}
 
-	public void setSupplier_id(int supplier_id) {
-		this.supplier_id = supplier_id;
+	public void setSupplierId(int supplierId) {
+		this.supplierId = supplierId;
 	}
 
 	public String getName() {
@@ -86,19 +86,19 @@ public class Product {
 		this.description = description;
 	}
 
-	public Date getCreated_at() {
-		return created_at;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [product_id=" + product_id + ", supplier_id=" + supplier_id + ", name=" + name + ", category="
-				+ category + ", price=" + price + ", stock=" + stock + ", description=" + description + ", created_at="
-				+ created_at + "]";
+		return "Product [productId=" + productId + ", supplierId=" + supplierId + ", name=" + name + ", category="
+				+ category + ", price=" + price + ", stock=" + stock + ", description=" + description + ", createdAt="
+				+ createdAt + "]";
 	}
 
 	
