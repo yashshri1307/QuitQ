@@ -17,7 +17,7 @@ public class Admin {
 
     public Admin(int adminId, String name, String email, String password, String role, Date created_at) {
         super();
-        this.admin_id = admin_id;
+        this.adminId = adminId;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -28,8 +28,8 @@ public class Admin {
         return adminId;
     }
 
-    public void setAdmin_id(int adminId) {
-        this.admin_id = adminId;
+    public void setadminId(int adminId) {
+        this.adminId = adminId;
     }
 
     public String getName() {
