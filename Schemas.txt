@@ -62,3 +62,28 @@ CREATE TABLE Payments (
     status ENUM('completed', 'pending', 'failed'),
     FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
+
+CREATE TABLE Admins (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Inventory (
+    inventory_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    stock_quantity INT DEFAULT 0 NOT NULL,
+    stock_value DECIMAL(10, 2) NOT NULL,
+    location VARCHAR(255),
+    status ENUM('available', 'out_of_stock', 'discontinued') DEFAULT 'available',
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+);
+
+CREATE TABLE ProductCategories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
