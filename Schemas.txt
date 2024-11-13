@@ -19,16 +19,24 @@ CREATE TABLE Suppliers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE ProductCategories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
+
 CREATE TABLE Products (
     product_id INT AUTO_INCREMENT PRIMARY KEY,
     supplier_id INT,
     name VARCHAR(150) NOT NULL,
-    category VARCHAR(100),
+    category_id INT,
     price DECIMAL(10, 2) NOT NULL,
     stock INT DEFAULT 0,
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (supplier_id) REFERENCES Suppliers(supplier_id)
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(supplier_id),
+    FOREIGN KEY (category_id) REFERENCES ProductCategories(category_id)
 );
 
 CREATE TABLE Cart (
@@ -79,11 +87,5 @@ CREATE TABLE Inventory (
     location VARCHAR(255),
     status ENUM('available', 'out_of_stock', 'discontinued') DEFAULT 'available',
     FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
-);
-
-CREATE TABLE ProductCategories (
-    category_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    description TEXT
 );
 
