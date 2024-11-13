@@ -2,10 +2,10 @@ package com.hexaware.entity;
 
 public class Inventory {
 
-    private int inventory_id;
-    private int product_id;
-    private int stock_quantity;
-    private double stock_value;
+    private int inventoryId;
+    private int productId;
+    private int stockQuantity;
+    private double stockValue;
     private String location;
     private String status;
 
@@ -13,46 +13,46 @@ public class Inventory {
         super();
     }
 
-    public Inventory(int inventory_id, int product_id, int stock_quantity, double stock_value, String location, String status) {
+    public Inventory(int inventoryId, int productId, int stockQuantity, double stockValue, String location, String status) {
         super();
-        this.inventory_id = inventory_id;
-        this.product_id = product_id;
-        this.stock_quantity = stock_quantity;
-        this.stock_value = stock_value;
+        this.inventoryId = inventoryId;
+        this.productId = productId;
+        this.stockQuantity = stockQuantity;
+        this.stockValue = stockValue;
         this.location = location;
         this.status = status;
     }
 
-    public int getInventory_id() {
-        return inventory_id;
+    public int inventoryId() {
+        return inventoryId;
     }
 
-    public void setInventory_id(int inventory_id) {
-        this.inventory_id = inventory_id;
+    public void setinventoryId(int inventoryId) {
+        this.inventoryId = inventoryId;
     }
 
-    public int getProduct_id() {
-        return product_id;
+    public int productId() {
+        return productId;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setproductId(int productId) {
+        this.productId = productId;
     }
 
-    public int getStock_quantity() {
-        return stock_quantity;
+    public int getSstockQuantity() {
+        return stockQuantity;
     }
 
-    public void setStock_quantity(int stock_quantity) {
-        this.stock_quantity = stock_quantity;
+    public void setstockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 
-    public double getStock_value() {
-        return stock_value;
+    public double getstockValue() {
+        return stockValue;
     }
 
-    public void setStock_value(double stock_value) {
-        this.stock_value = stock_value;
+    public void setstockValue(double stockValue) {
+        this.stockValue = stockValue;
     }
 
     public String getLocation() {
@@ -73,7 +73,7 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return "Inventory [inventory_id=" + inventory_id + ", product_id=" + product_id + ", stock_quantity=" + stock_quantity
-                + ", stock_value=" + stock_value + ", location=" + location + ", status=" + status + "]";
+        return "Inventory [inventoryId=" + inventoryId + ", productId=" + productId + ", stockQuantity=" + stockQuantity
+                + ", stockValue=" + stockValue + ", location=" + location + ", status=" + status + "]";
     }
 }
