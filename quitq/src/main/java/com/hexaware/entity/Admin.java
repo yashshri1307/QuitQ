@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Admin {
 
-    private int admin_id;
+    private int adminId;
     private String name;
     private String email;
     private String password;
@@ -15,7 +15,7 @@ public class Admin {
         super();
     }
 
-    public Admin(int admin_id, String name, String email, String password, String role, Date created_at) {
+    public Admin(int adminId, String name, String email, String password, String role, Date created_at) {
         super();
         this.admin_id = admin_id;
         this.name = name;
@@ -24,12 +24,12 @@ public class Admin {
         this.role = role;
     }
 
-    public int getAdmin_id() {
-        return admin_id;
+    public int getAdminId() {
+        return adminId;
     }
 
-    public void setAdmin_id(int admin_id) {
-        this.admin_id = admin_id;
+    public void setAdmin_id(int adminId) {
+        this.admin_id = adminId;
     }
 
     public String getName() {
@@ -68,7 +68,7 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "Admin [admin_id=" + admin_id + ", name=" + name + ", email=" + email + ", password=" + password
+        return "Admin [adminId=" + adminId + ", name=" + name + ", email=" + email + ", password=" + password
                 + ", role=" + role + " ]";
     }
 }
