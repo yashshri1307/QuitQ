@@ -9,7 +9,7 @@ public interface IProductCategoryService {
 
     ProductCategory getProductCategoryById(int id);
 
-    List<ProductCategory> getAllProductCategories();  // Ensure this method is in the interface
+    List<ProductCategory> getAllProductCategories();  
 
     void updateProductCategory(ProductCategory productCategory);
 
