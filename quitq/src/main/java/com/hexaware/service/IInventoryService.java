@@ -6,7 +6,7 @@ import java.util.List;
 public interface IInventoryService {
     void addInventory(Inventory inventory);
 
-    Inventory getInventoryById(int id);  // Ensure this method is declared in the interface
+    Inventory getInventoryById(int id);  
 
     List<Inventory> getAllInventories();
 
