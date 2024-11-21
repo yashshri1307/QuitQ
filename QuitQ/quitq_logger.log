@@ -1,0 +1,201 @@
+[32m2024-11-21 15:38:41.943[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] Starting QuitQApplication using Java 21.0.4 with PID 34612 (C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ\target\classes started by hp world in C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ)
+[32m2024-11-21 15:38:41.945[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] No active profile set, falling back to 1 default profile: "default"
+[32m2024-11-21 15:38:43.080[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[32m2024-11-21 15:38:43.208[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 110 ms. Found 6 JPA repository interfaces.
+[32m2024-11-21 15:38:43.849[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+[32m2024-11-21 15:38:43.872[0;39m [INFO] org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+[32m2024-11-21 15:38:43.872[0;39m [INFO] org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/10.1.31]
+[32m2024-11-21 15:38:43.959[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+[32m2024-11-21 15:38:43.959[0;39m [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1965 ms
+[32m2024-11-21 15:38:44.148[0;39m [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+[32m2024-11-21 15:38:44.206[0;39m [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 6.5.3.Final
+[32m2024-11-21 15:38:44.247[0;39m [INFO] org.hibernate.cache.internal.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+[32m2024-11-21 15:38:44.576[0;39m [INFO] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+[32m2024-11-21 15:38:44.611[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+[32m2024-11-21 15:38:44.968[0;39m [INFO] com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2adc1e84
+[32m2024-11-21 15:38:44.970[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+[32m2024-11-21 15:38:45.020[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[32m2024-11-21 15:38:45.022[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[32m2024-11-21 15:38:46.180[0;39m [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+[32m2024-11-21 15:38:46.449[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-11-21 15:38:46.745[0;39m [INFO] org.springframework.data.jpa.repository.query.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+[32m2024-11-21 15:38:47.144[0;39m [WARN] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productCategoryController': Unsatisfied dependency expressed through field 'service': No qualifying bean of type 'com.hexaware.quitq.service.IProductCategoryService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+[32m2024-11-21 15:38:47.145[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-11-21 15:38:47.147[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+[32m2024-11-21 15:38:47.157[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+[32m2024-11-21 15:38:47.159[0;39m [INFO] org.apache.catalina.core.StandardService [main] Stopping service [Tomcat]
+[32m2024-11-21 15:38:47.170[0;39m [INFO] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger [main] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+[32m2024-11-21 15:38:47.196[0;39m [ERROR] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field service in com.hexaware.quitq.restcontroller.ProductCategoryController required a bean of type 'com.hexaware.quitq.service.IProductCategoryService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.hexaware.quitq.service.IProductCategoryService' in your configuration.
+
+[32m2024-11-21 15:50:29.133[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] Starting QuitQApplication using Java 21.0.4 with PID 35080 (C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ\target\classes started by hp world in C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ)
+[32m2024-11-21 15:50:29.135[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] No active profile set, falling back to 1 default profile: "default"
+[32m2024-11-21 15:50:29.953[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[32m2024-11-21 15:50:30.039[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 79 ms. Found 6 JPA repository interfaces.
+[32m2024-11-21 15:50:30.550[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+[32m2024-11-21 15:50:30.565[0;39m [INFO] org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+[32m2024-11-21 15:50:30.566[0;39m [INFO] org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/10.1.31]
+[32m2024-11-21 15:50:30.626[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+[32m2024-11-21 15:50:30.626[0;39m [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1446 ms
+[32m2024-11-21 15:50:30.771[0;39m [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+[32m2024-11-21 15:50:30.822[0;39m [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 6.5.3.Final
+[32m2024-11-21 15:50:30.853[0;39m [INFO] org.hibernate.cache.internal.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+[32m2024-11-21 15:50:31.139[0;39m [INFO] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+[32m2024-11-21 15:50:31.168[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+[32m2024-11-21 15:50:31.503[0;39m [INFO] com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1c788d08
+[32m2024-11-21 15:50:31.505[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+[32m2024-11-21 15:50:31.546[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[32m2024-11-21 15:50:31.547[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[32m2024-11-21 15:50:32.561[0;39m [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+[32m2024-11-21 15:50:32.640[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-11-21 15:50:32.917[0;39m [INFO] org.springframework.data.jpa.repository.query.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+[32m2024-11-21 15:50:33.507[0;39m [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[32m2024-11-21 15:50:34.386[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+[32m2024-11-21 15:50:34.394[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] Started QuitQApplication in 5.666 seconds (process running for 6.423)
+[32m2024-11-21 15:50:40.572[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[32m2024-11-21 15:50:40.572[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+[32m2024-11-21 15:50:40.574[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+[32m2024-11-21 15:50:41.257[0;39m [INFO] org.springdoc.api.AbstractOpenApiResource [http-nio-8080-exec-1] Init duration for springdoc-openapi is: 474 ms
+[32m2024-11-21 15:51:58.365[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] Starting QuitQApplication using Java 21.0.4 with PID 29964 (C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ\target\classes started by hp world in C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ)
+[32m2024-11-21 15:51:58.368[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] No active profile set, falling back to 1 default profile: "default"
+[32m2024-11-21 15:51:59.240[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[32m2024-11-21 15:51:59.327[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 79 ms. Found 6 JPA repository interfaces.
+[32m2024-11-21 15:51:59.857[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+[32m2024-11-21 15:51:59.870[0;39m [INFO] org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+[32m2024-11-21 15:51:59.870[0;39m [INFO] org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/10.1.31]
+[32m2024-11-21 15:51:59.930[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+[32m2024-11-21 15:51:59.930[0;39m [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1518 ms
+[32m2024-11-21 15:52:00.081[0;39m [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+[32m2024-11-21 15:52:00.136[0;39m [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 6.5.3.Final
+[32m2024-11-21 15:52:00.168[0;39m [INFO] org.hibernate.cache.internal.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+[32m2024-11-21 15:52:00.495[0;39m [INFO] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+[32m2024-11-21 15:52:00.525[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+[32m2024-11-21 15:52:00.860[0;39m [INFO] com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@55682482
+[32m2024-11-21 15:52:00.862[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+[32m2024-11-21 15:52:00.905[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[32m2024-11-21 15:52:00.907[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[32m2024-11-21 15:52:01.896[0;39m [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+[32m2024-11-21 15:52:02.285[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-11-21 15:52:02.574[0;39m [INFO] org.springframework.data.jpa.repository.query.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+[32m2024-11-21 15:52:03.207[0;39m [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[32m2024-11-21 15:52:04.003[0;39m [WARN] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+[32m2024-11-21 15:52:04.005[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-11-21 15:52:04.007[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+[32m2024-11-21 15:52:04.015[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+[32m2024-11-21 15:52:04.027[0;39m [INFO] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger [main] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+[32m2024-11-21 15:52:04.046[0;39m [ERROR] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+[32m2024-11-21 15:52:08.401[0;39m [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(11)-127.0.0.1] Application shutdown requested.
+[32m2024-11-21 15:52:08.410[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [RMI TCP Connection(11)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-11-21 15:52:08.412[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(11)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+[32m2024-11-21 15:52:08.420[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(11)-127.0.0.1] HikariPool-1 - Shutdown completed.
+[32m2024-11-21 15:52:15.519[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] Starting QuitQApplication using Java 21.0.4 with PID 13892 (C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ\target\classes started by hp world in C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ)
+[32m2024-11-21 15:52:15.522[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] No active profile set, falling back to 1 default profile: "default"
+[32m2024-11-21 15:52:16.353[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[32m2024-11-21 15:52:16.439[0;39m [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 79 ms. Found 6 JPA repository interfaces.
+[32m2024-11-21 15:52:16.927[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+[32m2024-11-21 15:52:16.941[0;39m [INFO] org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+[32m2024-11-21 15:52:16.941[0;39m [INFO] org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/10.1.31]
+[32m2024-11-21 15:52:17.031[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+[32m2024-11-21 15:52:17.032[0;39m [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1468 ms
+[32m2024-11-21 15:52:17.173[0;39m [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+[32m2024-11-21 15:52:17.224[0;39m [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 6.5.3.Final
+[32m2024-11-21 15:52:17.256[0;39m [INFO] org.hibernate.cache.internal.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+[32m2024-11-21 15:52:17.537[0;39m [INFO] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+[32m2024-11-21 15:52:17.566[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+[32m2024-11-21 15:52:17.908[0;39m [INFO] com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f4964f2
+[32m2024-11-21 15:52:17.910[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+[32m2024-11-21 15:52:17.954[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[32m2024-11-21 15:52:17.955[0;39m [WARN] org.hibernate.orm.deprecation [main] HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+[32m2024-11-21 15:52:18.920[0;39m [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+[32m2024-11-21 15:52:19.004[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-11-21 15:52:19.277[0;39m [INFO] org.springframework.data.jpa.repository.query.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+[32m2024-11-21 15:52:19.900[0;39m [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[32m2024-11-21 15:52:20.766[0;39m [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+[32m2024-11-21 15:52:20.775[0;39m [INFO] com.hexaware.quitq.QuitQApplication [main] Started QuitQApplication in 5.654 seconds (process running for 6.393)
+[32m2024-11-21 15:52:49.659[0;39m [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[32m2024-11-21 15:52:49.660[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+[32m2024-11-21 15:52:49.661[0;39m [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+[32m2024-11-21 15:52:50.324[0;39m [INFO] org.springdoc.api.AbstractOpenApiResource [http-nio-8080-exec-4] Init duration for springdoc-openapi is: 467 ms
+2024-11-21 16:00:55.698 [INFO] com.hexaware.quitq.service.ProductServiceImpTest [main] Starting ProductServiceImpTest using Java 21.0.4 with PID 3620 (started by hp world in C:\Users\hp world\Documents\YASH\Placement\Hexaware Training\Role Specific\QuitQ\QuitQ)
+2024-11-21 16:00:55.699 [INFO] com.hexaware.quitq.service.ProductServiceImpTest [main] No active profile set, falling back to 1 default profile: "default"
+2024-11-21 16:00:56.869 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-21 16:00:56.958 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 80 ms. Found 6 JPA repository interfaces.
+2024-11-21 16:00:57.612 [INFO] org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-21 16:00:57.708 [INFO] org.hibernate.Version [main] HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-21 16:00:57.765 [INFO] org.hibernate.cache.internal.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2024-11-21 16:00:58.272 [INFO] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-21 16:00:58.315 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2024-11-21 16:00:58.761 [INFO] com.zaxxer.hikari.pool.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1eb6037d
+2024-11-21 16:00:58.765 [INFO] com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-11-21 16:00:58.830 [WARN] org.hibernate.orm.deprecation [main] HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-21 16:00:58.832 [WARN] org.hibernate.orm.deprecation [main] HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-21 16:01:00.055 [INFO] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-21 16:01:00.132 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-21 16:01:00.509 [INFO] org.springframework.data.jpa.repository.query.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-21 16:01:01.475 [WARN] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-21 16:01:02.997 [INFO] com.hexaware.quitq.service.ProductServiceImpTest [main] Started ProductServiceImpTest in 7.747 seconds (process running for 9.358)
+2024-11-21 16:01:03.897 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=0, name=TestSupplier, email=testsupplier@example.com, password=null, mobileNumber=null, companyName=null, address=123 Test Street] is Added from Add Service
+2024-11-21 16:01:04.025 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=0, name=TestSupplier, email=testsupplier@example.com, password=null, mobileNumber=null, companyName=null, address=123 Test Street] is Added from Add Service
+2024-11-21 16:01:04.102 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=0, name=TestSupplier, email=testsupplier@example.com, password=null, mobileNumber=null, companyName=null, address=123 Test Street] is Added from Add Service
+2024-11-21 16:01:04.139 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=0, name=TestSupplier, email=testsupplier@example.com, password=null, mobileNumber=null, companyName=null, address=123 Test Street] is Added from Add Service
+2024-11-21 16:01:04.165 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=0, name=TestSupplier, email=testsupplier@example.com, password=null, mobileNumber=null, companyName=null, address=123 Test Street] is Added from Add Service
+2024-11-21 16:01:04.188 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=0, name=TestSupplier, email=testsupplier@example.com, password=null, mobileNumber=null, companyName=null, address=123 Test Street] is Added from Add Service
+2024-11-21 16:01:04.218 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=0, name=TestSupplier, email=testsupplier@example.com, password=null, mobileNumber=null, companyName=null, address=123 Test Street] is Added from Add Service
+2024-11-21 16:01:04.253 [INFO] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils [main] Could not detect default configuration classes for test class [com.hexaware.quitq.service.SupplierServiceImpTest]: SupplierServiceImpTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-21 16:01:04.257 [INFO] org.springframework.boot.test.context.SpringBootTestContextBootstrapper [main] Found @SpringBootConfiguration com.hexaware.quitq.QuitQApplication for test class com.hexaware.quitq.service.SupplierServiceImpTest
+2024-11-21 16:01:04.276 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=0, name=SJjk, email=sup@jfd.com, password=Asup1243, mobileNumber=8966007246, companyName=sup, address=add] is Added from Add Service
+2024-11-21 16:01:04.284 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=8, name=updatedsupplier, email=sup@jfd.com, password=Asup1243, mobileNumber=8966007246, companyName=UpdatedCompany, address=add] is Added from Add Service
+2024-11-21 16:01:04.315 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=8, name=updatedsupplier, email=sup@jfd.com, password=Asup1243, mobileNumber=8966007246, companyName=UpdatedCompany, address=add] is Added from Add Service
+2024-11-21 16:01:04.320 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main]  is Added from Add Service
+2024-11-21 16:01:04.338 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=8, name=updatedsupplier, email=sup@jfd.com, password=Asup1243, mobileNumber=8966007246, companyName=UpdatedCompany, address=add] is Added from Add Service
+2024-11-21 16:01:04.365 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=8, name=updatedsupplier, email=sup@jfd.com, password=Asup1243, mobileNumber=8966007246, companyName=UpdatedCompany, address=add] is Added from Add Service
+2024-11-21 16:01:04.395 [INFO] com.hexaware.quitq.service.SupplierServiceImp [main] SupplierDTO [supplierId=8, name=updatedsupplier, email=sup@jfd.com, password=Asup1243, mobileNumber=8966007246, companyName=UpdatedCompany, address=add] is Added from Add Service
+2024-11-21 16:01:04.411 [INFO] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils [main] Could not detect default configuration classes for test class [com.hexaware.quitq.service.CustomerServiceImpTest]: CustomerServiceImpTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-21 16:01:04.415 [INFO] org.springframework.boot.test.context.SpringBootTestContextBootstrapper [main] Found @SpringBootConfiguration com.hexaware.quitq.QuitQApplication for test class com.hexaware.quitq.service.CustomerServiceImpTest
+2024-11-21 16:01:04.441 [INFO] com.hexaware.quitq.service.CustomerServiceImp [main] CustomerDTO [customerId=0, name=Yash, email=joe@exa.com, password=Afh743fd, mobileNumber=1234567890, address=jkdf] is Added from Add Service
+2024-11-21 16:01:04.470 [INFO] com.hexaware.quitq.service.CustomerServiceImp [main] CustomerDTO [customerId=0, name=Yash, email=joe@exa.com, password=Afh743fd, mobileNumber=1234567890, address=jkdf] is Added from Add Service
+2024-11-21 16:01:04.497 [INFO] com.hexaware.quitq.service.CustomerServiceImp [main] CustomerDTO [customerId=0, name=Yash, email=joe@exa.com, password=Afh743fd, mobileNumber=1234567890, address=jkdf] is Added from Add Service
+2024-11-21 16:01:04.518 [INFO] com.hexaware.quitq.service.CustomerServiceImp [main] CustomerDTO [customerId=0, name=Yash, email=joe@exa.com, password=Afh743fd, mobileNumber=1234567890, address=jkdf] is Added from Add Service
+2024-11-21 16:01:04.545 [INFO] com.hexaware.quitq.service.CustomerServiceImp [main] CustomerDTO [customerId=0, name=Yash, email=joe@exa.com, password=Afh743fd, mobileNumber=1234567890, address=jkdf] is Added from Add Service
+2024-11-21 16:01:04.588 [INFO] com.hexaware.quitq.service.CustomerServiceImp [main] CustomerDTO [customerId=0, name=Yash, email=joe@exa.com, password=Afh743fd, mobileNumber=1234567890, address=jkdf] is Added from Add Service
+2024-11-21 16:01:04.616 [INFO] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils [main] Could not detect default configuration classes for test class [com.hexaware.quitq.QuitQApplicationTests]: QuitQApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-21 16:01:04.627 [INFO] org.springframework.boot.test.context.SpringBootTestContextBootstrapper [main] Found @SpringBootConfiguration com.hexaware.quitq.QuitQApplication for test class com.hexaware.quitq.QuitQApplicationTests
+2024-11-21 16:01:04.657 [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-21 16:01:04.660 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-11-21 16:01:04.674 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+[32m2024-11-21 16:53:36.998[0;39m [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(72)-127.0.0.1] Application shutdown requested.
+[32m2024-11-21 16:53:37.020[0;39m [INFO] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [RMI TCP Connection(72)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+[32m2024-11-21 16:53:37.027[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(72)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+[32m2024-11-21 16:53:37.036[0;39m [INFO] com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(72)-127.0.0.1] HikariPool-1 - Shutdown completed.
