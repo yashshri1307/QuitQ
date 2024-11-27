@@ -1,5 +1,11 @@
 package com.hexaware.quitq.restcontroller;
-
+/* File: SupplierRestController
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-14
+ * Description: Supplier Controller will have api mapping for supplier functionality        
+                will take Data using SupplierDTO
+                and will transfer to service layer
+ */
 import java.util.List;
 
 import org.slf4j.Logger;

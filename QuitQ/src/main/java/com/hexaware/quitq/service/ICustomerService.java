@@ -1,5 +1,9 @@
 package com.hexaware.quitq.service;
-
+/* File: ICustomerService
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-12
+ * Description: Service Interface for customer          
+ */
 import java.util.List;
 
 import com.hexaware.quitq.dto.CustomerDTO;

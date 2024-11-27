@@ -1,23 +1,38 @@
 package com.hexaware.quitq.service;
-
+/* File: CustomerServiceImp
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-12
+ * Description: Service Implementation for serviceInterface for customer          
+                Will Contain business logic and 
+                will take Data using CustomerDTO
+ */ 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.quitq.dto.CustomerDTO;
 import com.hexaware.quitq.entities.Customer;
+import com.hexaware.quitq.entities.UserInfo;
 import com.hexaware.quitq.exception.CustomerAlreadyExistsException;
 import com.hexaware.quitq.exception.CustomerNotFoundException;
 import com.hexaware.quitq.repository.ICustomerRepository;
+import com.hexaware.quitq.repository.UserInfoRepository;
 
 @Service
 public class CustomerServiceImp implements ICustomerService{
 
 	@Autowired
 	ICustomerRepository repo;
+	
+	@Autowired
+	UserInfoRepository userrepo;
+	
+	@Autowired
+    private PasswordEncoder passwordEncoder;
 	
 	Logger logger=LoggerFactory.getLogger(CustomerServiceImp.class);
 	
@@ -37,11 +52,24 @@ public class CustomerServiceImp implements ICustomerService{
 		
 		customer.setName(customerDTO.getName());
 		customer.setEmail(customerDTO.getEmail());
-		customer.setPassword(customerDTO.getPassword());
+		customer.setPassword(passwordEncoder.encode(customerDTO.getPassword()));
 		customer.setMobileNumber(customerDTO.getMobileNumber());
 		customer.setAddress(customerDTO.getAddress());
 		
-			return repo.save(customer);
+			Customer added= repo.save(customer);
+			
+			UserInfo userinfo=new UserInfo();
+			
+			userinfo.setId(added.getCustomerId());
+			userinfo.setName(added.getName());
+			userinfo.setEmail(added.getEmail());
+			userinfo.setPassword(added.getPassword());
+			userinfo.setRoles("CUSTOMER");
+			
+			userrepo.save(userinfo);
+			
+			return added;
+			
 	}
 
 	@Override
@@ -68,7 +96,7 @@ public class CustomerServiceImp implements ICustomerService{
 		customer.setCustomerId(customerDTO.getCustomerId());	
 		customer.setName(customerDTO.getName());		
 		customer.setEmail(customerDTO.getEmail());		
-		customer.setPassword(customerDTO.getPassword());	
+		customer.setPassword(passwordEncoder.encode(customerDTO.getPassword()));	
 		customer.setMobileNumber(customerDTO.getMobileNumber());
         customer.setAddress(customerDTO.getAddress());
 		

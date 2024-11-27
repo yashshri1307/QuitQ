@@ -1,6 +1,9 @@
 
-/* author : Yadnesh Shewale 
+/* author : Yadnesh Shewale
+ * date : 02/11/2024
+ * description : product category entity class is created 
  */
+
 
 package com.hexaware.quitq.entities;
 

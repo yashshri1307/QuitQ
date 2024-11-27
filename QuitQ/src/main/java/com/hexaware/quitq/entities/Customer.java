@@ -1,5 +1,9 @@
 package com.hexaware.quitq.entities;
-
+/* File: Customer Entity
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-05
+ * Description: Customer Entity With Validations
+ */
 import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;

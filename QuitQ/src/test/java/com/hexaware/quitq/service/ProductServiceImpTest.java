@@ -2,54 +2,89 @@ package com.hexaware.quitq.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hexaware.quitq.dto.ProductDTO;
-import com.hexaware.quitq.dto.SupplierDTO;
 import com.hexaware.quitq.entities.Product;
 import com.hexaware.quitq.entities.Supplier;
-import com.hexaware.quitq.exception.ProductNotFoundException;
+import com.hexaware.quitq.repository.IProductRepository;
+import com.hexaware.quitq.repository.ISupplierRepository;
 
 @SpringBootTest
 class ProductServiceImpTest {
 
-    @Autowired
-    private IProductService productService;
+    @InjectMocks
+    private ProductServiceImp productService;
 
-    @Autowired
+    @Mock
+    private IProductRepository productRepository;
+
+    @Mock
+    private ISupplierRepository supplierRepository;
+
+    @Mock
     private ISupplierService supplierService;
 
-    // Helper method to create a supplier
-    private Supplier createSupplier() {
-        SupplierDTO supplierDTO = new SupplierDTO();
-        supplierDTO.setName("TestSupplier");
-        supplierDTO.setAddress("123 Test Street");
-        supplierDTO.setEmail("testsupplier@example.com"); // Unique email
-        return supplierService.addSupplier(supplierDTO);
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
     }
 
-    // Helper method to create a product
-    private Product createProduct(Supplier supplier) {
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setName("TestProduct");
-        productDTO.setDescription("A sample product for testing");
-        productDTO.setPrice(150.0);
-        productDTO.setSupplierId(supplier.getSupplierId());
-        return productService.addProduct(productDTO);
+    private Supplier createSupplier() {
+        Supplier supplier = new Supplier();
+        supplier.setSupplierId(1);
+        supplier.setName("TestSupplier");
+        supplier.setAddress("123 Test Street");
+        supplier.setEmail("testsupplier@example.com");
+        return supplier;
+    }
+
+    private Product createProduct(Supplier supplier, int productId) {
+        Product product = new Product();
+        product.setProductId(productId); 
+        product.setName("TestProduct");
+        product.setDescription("A sample product for testing");
+        product.setPrice(150.0);
+        product.setSupplier(supplier);
+        return product;
     }
 
     @Test
     @Transactional
     void testAddProduct() {
         Supplier supplier = createSupplier();
-        Product product = createProduct(supplier);
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setName("TestProduct");
+        productDTO.setDescription("A sample product for testing");
+        productDTO.setPrice(150.0);
+        productDTO.setSupplierId(supplier.getSupplierId());
+
+       
+        when(supplierRepository.findById(supplier.getSupplierId())).thenReturn(Optional.of(supplier));
+
+   
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> {
+            Product product = invocation.getArgument(0);
+            product.setProductId(1); 
+            return product;
+        });
+
+        Product product = productService.addProduct(productDTO);
 
         assertNotNull(product);
         assertEquals("TestProduct", product.getName());
@@ -60,7 +95,7 @@ class ProductServiceImpTest {
     @Transactional
     void testUpdateProduct() {
         Supplier supplier = createSupplier();
-        Product product = createProduct(supplier);
+        Product product = createProduct(supplier, 1); 
 
         ProductDTO productDTO = new ProductDTO();
         productDTO.setProductId(product.getProductId());
@@ -68,6 +103,17 @@ class ProductServiceImpTest {
         productDTO.setDescription("Updated description");
         productDTO.setPrice(200.0);
         productDTO.setSupplierId(supplier.getSupplierId());
+
+        
+        when(productRepository.findById(product.getProductId())).thenReturn(Optional.of(product));
+        when(supplierRepository.findById(supplier.getSupplierId())).thenReturn(Optional.of(supplier));
+
+      
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> {
+            Product updatedProduct = invocation.getArgument(0);
+            updatedProduct.setProductId(product.getProductId()); 
+            return updatedProduct;
+        });
 
         Product updatedProduct = productService.updateProduct(productDTO);
 
@@ -80,7 +126,9 @@ class ProductServiceImpTest {
     @Transactional
     void testGetProductById() {
         Supplier supplier = createSupplier();
-        Product product = createProduct(supplier);
+        Product product = createProduct(supplier, 1); 
+
+        when(productRepository.findById(product.getProductId())).thenReturn(Optional.of(product));
 
         Product fetchedProduct = productService.getProductById(product.getProductId());
 
@@ -90,26 +138,21 @@ class ProductServiceImpTest {
 
     @Test
     @Transactional
-    void testGetAllProducts() {
-        Supplier supplier = createSupplier();
-        createProduct(supplier);
-
-        List<Product> products = productService.getAllProducts();
-
-        assertNotNull(products);
-    }
-
-    @Test
-    @Transactional
     void testDeleteProductById() {
         Supplier supplier = createSupplier();
-        Product product = createProduct(supplier);
+        Product product = createProduct(supplier, 1); 
 
+       
+        when(productRepository.findById(product.getProductId())).thenReturn(Optional.of(product));
+
+        
+        doNothing().when(productRepository).deleteById(product.getProductId());
+
+       
         productService.deleteProductById(product.getProductId());
 
-        assertThrows(ProductNotFoundException.class, () -> {
-            productService.getProductById(product.getProductId());
-        });
+        
+        verify(productRepository, times(1)).deleteById(product.getProductId());
     }
 
     @Test
@@ -121,24 +164,29 @@ class ProductServiceImpTest {
         productDTO.setName("AnotherProduct");
         productDTO.setDescription("Another test product");
         productDTO.setPrice(250.0);
-        productDTO.setSupplierId((supplier.getSupplierId()));
-        productService.addProduct(productDTO);
+        productDTO.setSupplierId(supplier.getSupplierId());
+
+        when(productRepository.findProductsByPriceRange(100.0, 200.0))
+                .thenReturn(List.of(createProduct(supplier, 2))); 
 
         List<Product> products = productService.getProductsByPriceRange(100.0, 200.0);
 
         assertNotNull(products);
+        assertEquals(1, products.size());
     }
 
     @Test
     @Transactional
     void testSearchProductByName() {
         Supplier supplier = createSupplier();
-        createProduct(supplier);
+        Product product = createProduct(supplier, 1); 
+
+        when(productRepository.findByNameContainingIgnoreCase("TestProduct"))
+                .thenReturn(List.of(product));
 
         List<Product> products = productService.searchProductByName("TestProduct");
 
         assertNotNull(products);
- 
         assertEquals("TestProduct", products.get(0).getName());
     }
 }

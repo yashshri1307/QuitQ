@@ -1,3 +1,8 @@
+/* author : Yadnesh Shewale
+ * date : 09/11/2024
+ * 
+ */
+
 package com.hexaware.quitq.service;
 
 
@@ -7,8 +12,7 @@ import com.hexaware.quitq.entities.ProductCategory;
 import com.hexaware.quitq.repository.IProductCategoryRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Order;
+
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;

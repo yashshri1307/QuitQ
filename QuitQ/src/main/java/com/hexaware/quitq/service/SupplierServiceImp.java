@@ -1,23 +1,38 @@
 package com.hexaware.quitq.service;
-
+/* File: SupplierServiceImp
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-12
+ * Description: Service Implementation for serviceInterface for supplier          
+                Will Contain business logic and 
+                will take Data using SupplierDTO
+ */
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.quitq.dto.SupplierDTO;
 import com.hexaware.quitq.entities.Supplier;
+import com.hexaware.quitq.entities.UserInfo;
 import com.hexaware.quitq.exception.SupplierAlreadyExistsException;
 import com.hexaware.quitq.exception.SupplierNotFoundException;
 import com.hexaware.quitq.repository.ISupplierRepository;
+import com.hexaware.quitq.repository.UserInfoRepository;
 
 @Service
 public class SupplierServiceImp implements ISupplierService {
 
 	@Autowired
 	ISupplierRepository repo;
+	
+	@Autowired
+	UserInfoRepository userrepo;
+	
+	@Autowired
+	PasswordEncoder passwordencoder;
 	
 	Logger logger=LoggerFactory.getLogger(SupplierServiceImp.class);
 	
@@ -37,12 +52,24 @@ public class SupplierServiceImp implements ISupplierService {
 		
 		supplier.setName(supplierDTO.getName());
 		supplier.setEmail(supplierDTO.getEmail());
-		supplier.setPassword(supplierDTO.getPassword());
+		supplier.setPassword(passwordencoder.encode(supplierDTO.getPassword()));
 		supplier.setMobileNumber(supplierDTO.getMobileNumber());
 		supplier.setCompanyName(supplierDTO.getCompanyName());
 		supplier.setAddress(supplierDTO.getAddress());
 		
-			return repo.save(supplier);
+		Supplier added=repo.save(supplier);
+		
+		UserInfo userinfo =new UserInfo();
+		
+		userinfo.setId(added.getSupplierId());
+		userinfo.setName(added.getName());
+		userinfo.setEmail(added.getEmail());
+		userinfo.setPassword(added.getPassword());
+		userinfo.setRoles("SUPPLIER");
+		
+		userrepo.save(userinfo);
+		
+		return added;
 	}
 	@Override
 	public Supplier getSupplierById(Integer id) {

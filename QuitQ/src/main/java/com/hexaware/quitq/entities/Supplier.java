@@ -1,9 +1,14 @@
 package com.hexaware.quitq.entities;
-
+/* File: Supplier Entity
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-06
+ * Description: Supplier Entity With Validations
+ */
 import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,6 +44,7 @@ public class Supplier {
 	private String address;
 	
 	@CreationTimestamp
+	@Column(nullable = false, updatable = false)
 	private Date createdAt;
 	
 	public Supplier() {

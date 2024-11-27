@@ -1,5 +1,11 @@
 package com.hexaware.quitq.service;
-
+/* File: ProductServiceImp
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-12
+ * Description: Service Implementation for serviceInterface for product          
+                Will Contain business logic and 
+                will take Data using ProductDTO
+ */
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

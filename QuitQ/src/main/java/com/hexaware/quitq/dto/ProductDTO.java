@@ -1,5 +1,10 @@
 package com.hexaware.quitq.dto;
-
+/* File: Product DTO
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-11
+ * Description: Product DTO With Validations 
+ *              For Data Transfer between Layers             
+ */
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

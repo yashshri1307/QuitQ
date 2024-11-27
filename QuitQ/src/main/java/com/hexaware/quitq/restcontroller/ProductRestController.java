@@ -1,5 +1,11 @@
 package com.hexaware.quitq.restcontroller;
-
+/* File: ProductRestController
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-14
+ * Description: product Controller will have api mapping for product functionality        
+                will take Data using productrDTO
+                and will transfer to service layer
+ */
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

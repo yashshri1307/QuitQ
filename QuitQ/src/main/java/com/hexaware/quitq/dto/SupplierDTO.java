@@ -1,5 +1,10 @@
 package com.hexaware.quitq.dto;
-
+/* File: Supplier DTO
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-11
+ * Description: Supplier DTO With Validations 
+ *              For Data Transfer between Layers             
+ */
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;

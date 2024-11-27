@@ -1,5 +1,9 @@
 package com.hexaware.quitq.entities;
-
+/* File: Product Entity
+ * Author: Yash Shrivastava
+ * Date Created: 2024-11-06
+ * Description: Product Entity With Validations
+ */
 import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
