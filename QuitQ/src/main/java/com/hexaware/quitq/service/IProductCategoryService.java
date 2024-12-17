@@ -1,6 +1,7 @@
-/* author : Yadnesh Shewale
- * date : 13/12/2024
- * description : ProductCategory service interface with CRUD operations.
+/* File: IProductCategoryService
+ * Author: Yadnesh shewale
+ * Date Created: 2024-11-12
+ * Description: Service Interface for product category           
  */
 package com.hexaware.quitq.service;
 

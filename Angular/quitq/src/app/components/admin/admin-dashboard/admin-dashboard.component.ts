@@ -1,18 +1,8 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-admin-dashboard',
-//   templateUrl: './admin-dashboard.component.html',
-//   styleUrls: ['./admin-dashboard.component.css']
-// })
-// export class AdminDashboardComponent {
-
-// }
-
-
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; 
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Admin } from 'src/app/models/Admin';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -20,16 +10,30 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-  constructor(private router: Router, private authService: AuthService) {}
+  male="assets/male.png";
+  female="assets/female.png";
+  admin={
+    name:'',email:""}
+  loggedInEmail: string = '';
+  constructor(private adminservice: AdminService,private router: Router, private authService: AuthService) {}
+
+  ngOnInit(){
+    this.loggedInEmail = this.authService.getLoggedInEmail();
+    this.getadmindetails(this.loggedInEmail);
+  }
+  getadmindetails(email:string):void{
+    this.adminservice.getAdminByEmail(email).subscribe({
+      next: (data) => {
+        this.admin = data;
+      },
+      error: (err) => {
+        console.error('Error fetching Admin details:', err);
+      }
+    });  }
 
   viewUsers(): void {
     // Navigate to the Users management page
-    this.router.navigate(['/admin-users']);
-  }
-
-  manageSettings(): void {
-    // Navigate to the Settings management page
-    this.router.navigate(['/admin-settings']);
+    this.router.navigate(['/admin-displayall']);
   }
 
   logout(): void {
@@ -37,6 +41,11 @@ export class AdminDashboardComponent {
     localStorage.removeItem('authToken');
     this.authService.logout();
     this.router.navigate(['/admin-login']);
+  }
+
+  manageProductCategories(): void {
+    // Navigate to the Product Categories dashboard
+    this.router.navigate(['/product-category-dashboard']);
   }
 }
 

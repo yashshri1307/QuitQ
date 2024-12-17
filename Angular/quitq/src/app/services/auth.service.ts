@@ -98,7 +98,6 @@ export class AuthService {
   getLoggedInEmail(): string {
     const token = localStorage.getItem('authToken'); 
     if (token) {
-      console.log(token+"=here")
       const tokenParts = token.split('.');
       if (tokenParts.length === 3) {
         const payload = tokenParts[1]; 

@@ -1,22 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -69,7 +51,7 @@ export class UpdateInventoryComponent implements OnInit {
     if (this.inventoryForm.valid) {
       const updatedInventory: Inventory = {
         ...this.inventoryForm.value, 
-        inventoryId: this.inventoryId  // Explicitly include inventoryId
+     //   inventoryId: this.inventoryId  // Explicitly include inventoryId here
       };
   
       this.inventoryService.updateInventory(updatedInventory).subscribe(
@@ -84,6 +66,35 @@ export class UpdateInventoryComponent implements OnInit {
     }
   }
   
+
+//LATEST CHAGES DONE BY YADNESH
+
+  // updateInventory() {
+  //   if (this.inventoryForm.valid) {
+  //     const updatedInventory: Inventory = {
+  //       ...this.inventoryForm.value, 
+  //       inventoryId: this.inventoryId  // Explicitly include inventoryId
+  //     };
+  
+  //     this.inventoryService.updateInventory(updatedInventory).subscribe(
+  //       () => {
+  //         alert('Inventory updated successfully!');
+  //       },
+  //       (error) => {
+  //         console.error('Error updating inventory:', error);
+  //         alert('Failed to update inventory: ' + error.message);
+  //       }
+  //     );
+  //   }
+  // }
+  
+
+
+
+
+
+
+
   
 //   updateInventory() {
 //   if (this.inventoryForm.valid) {

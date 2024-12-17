@@ -1,6 +1,9 @@
-/* author : Yadnesh Shewale
- * date : 13/11/2024
- * 
+/* File: ProductCategoryRestController
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-14
+ * Description: ProductCategory Controller will have api mapping for ProductCategory functionality        
+                will take Data using ProductCategoryDTO
+                and will transfer to service layer
  */
 
 package com.hexaware.quitq.restcontroller;
@@ -15,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/api/productcategory")

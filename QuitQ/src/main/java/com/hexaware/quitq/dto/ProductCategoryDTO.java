@@ -1,6 +1,8 @@
-/* author : Yadnesh Shewale
- * date : 13/12/2024
- * description : ProductCategoryDTO class for data transfer between layers.
+/* File: ProductCategory DTO
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-11
+ * Description: ProductCategory DTO With Validations 
+ *              For Data Transfer between Layers             
  */
 package com.hexaware.quitq.dto;
 

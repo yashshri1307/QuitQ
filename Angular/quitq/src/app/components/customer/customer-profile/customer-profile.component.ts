@@ -30,7 +30,6 @@ export class CustomerProfileComponent implements OnInit{
   }
 
   fetchCustomerDetails(email: string): void {
-    console.log("ayamein")
     this.customerService.getCustomerByEmail(email).subscribe({
       next: (data) => {
         this.customer = data;

@@ -1,13 +1,16 @@
-/* author : Yadnesh Shewale
- * date : 09/11/2024
+/* File: AdminServiceImp
+ * Author: Yadnesh shewale
+ * Date Created: 2024-11-12
+ * Description: Service Interface implementation for Admin           
  */
-
 package com.hexaware.quitq.service;
 
 import com.hexaware.quitq.dto.AdminDTO;
 import com.hexaware.quitq.entities.Admin;
 import com.hexaware.quitq.entities.UserInfo;
 import com.hexaware.quitq.exception.AdminNotFoundException;
+import com.hexaware.quitq.exception.CustomerNotFoundException;
+import com.hexaware.quitq.exception.ProductNotFoundException;
 import com.hexaware.quitq.exception.AdminAlreadyExistsException;  // Uncomment this if you want to use this exception
 import com.hexaware.quitq.repository.IAdminRepository;
 import com.hexaware.quitq.repository.UserInfoRepository;
@@ -55,7 +58,7 @@ public class AdminServiceImp implements IAdminService {
         userInfo.setName(savedAdmin.getName());
         userInfo.setEmail(savedAdmin.getEmail());
         userInfo.setPassword(savedAdmin.getPassword());
-        userInfo.setRoles(adminDTO.getRole());
+        userInfo.setRoles("ADMIN");
         userRepo.save(userInfo);
 
         logger.info("Admin added: " + adminDTO);
@@ -121,5 +124,20 @@ public class AdminServiceImp implements IAdminService {
         admin.setPassword(adminDTO.getPassword());  // Password will be encoded later
         admin.setRole(adminDTO.getRole());
         return admin;
+    }
+
+	@Override
+	public Admin getAdminByEmail(String email) {
+		return adminRepo.findByEmail(email).orElseThrow(() -> new AdminNotFoundException("Admin with email " + email + " not found."));
+		
+	}
+	
+	@Override
+    public String deleteAdminById(Integer id) {
+        if (!adminRepo.existsById(id)) {
+            throw new ProductNotFoundException("Admin with ID " + id + " not found");
+        }
+        adminRepo.deleteById(id);
+        return "Admin deleted successfully";
     }
 }

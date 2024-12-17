@@ -23,11 +23,8 @@ export class NavbarComponent implements OnInit{
     this.authService.loggedIn$.subscribe((loggedIn) => {
       this.loggedIn = loggedIn;
       if (loggedIn) {
-        console.log('User logged in in nav:', loggedIn);
-        console.log("after login redirected i am here");
         this.authService.username$.subscribe((username) => {
           this.username = username;
-          console.log('Username3:', this.username);
         });
         this.role = this.authService.getRole();
       }
@@ -46,21 +43,36 @@ export class NavbarComponent implements OnInit{
     if (this.role === 'supplier') {
       console.log("in navbar ")
       this.router.navigate(['/supplier-profile']);
-    } else {
+    } 
+    if (this.role === 'customer'){
       this.router.navigate(['/customer-profile']);
+    }
+    if (this.role === 'admin'){
+      this.router.navigate(['/admin-profile']);
     }
   }
 
   myOrders(): void {
 
-    console.log("role=")
+    console.log(this.role);
+    if (this.role === 'supplier') {
+
+      this.router.navigate(['/supplier-dashboard']);
+    } 
+    if (this.role === 'customer') {
+      this.router.navigate(['/customer-order']);
+    }
+    if (this.role === 'admin') {
+      this.router.navigate(['/admin-dashboard']);
+    }
+  }
+
+  myoption(): void {
     console.log(this.role);
     if (this.role === 'supplier') {
       console.log("in navbar ")
-      this.router.navigate(['/supplier-dashboard']);
-    } else {
-      this.router.navigate(['/customer-order']);
-    }
+      this.router.navigate(['/orders-dashboard']);
+    } 
   }
 
   onSearchProducts(){

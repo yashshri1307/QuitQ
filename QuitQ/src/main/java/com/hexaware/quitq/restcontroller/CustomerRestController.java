@@ -81,7 +81,6 @@ public class CustomerRestController {
 	@GetMapping("/getcustomerByEmail/{email}")
 	public Customer getcustomerbyEmail(@PathVariable String email)
 	{
-		System.out.println("yoyo in the customercontroller");
 		return service.getCustomerByEmail(email);
 	}
 	

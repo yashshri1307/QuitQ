@@ -11,7 +11,7 @@ import com.hexaware.quitq.service.IOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200") // Allow requests from Angular app
 @RestController
 @RequestMapping("/api/orders")
 public class OrdersRestController {
@@ -19,7 +19,7 @@ public class OrdersRestController {
     @Autowired
     private IOrdersService service;
 
-    @PostMapping("/addorder")
+    @PostMapping("/add")
     public OrdersDTO addOrder(@RequestBody OrdersDTO ordersDTO) {
     	System.out.print("nonono");
         Orders order = service.addOrder(ordersDTO.toEntity());

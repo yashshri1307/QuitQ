@@ -134,5 +134,11 @@ public class ProductServiceImp implements IProductService {
         // Save the updated product and return it
         return repo.save(product);
     }
+    
+    @Override
+    public List<Product> getProductBySupplierId(Integer id) {
+    	
+        return repo.findProductsBySupplierId(id);
+    }
 
 }

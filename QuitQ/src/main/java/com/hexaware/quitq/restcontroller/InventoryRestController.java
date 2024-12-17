@@ -1,6 +1,9 @@
-/* author : Yadnesh Shewale
- * date : 13/11/2024
- * 
+/* File: InventoryRestController
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-14
+ * Description: Inventory Controller will have api mapping for inventory functionality        
+                will take Data using InventoryDTO
+                and will transfer to service layer
  */
 
 package com.hexaware.quitq.restcontroller;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import com.hexaware.quitq.dto.InventoryDTO;
 import com.hexaware.quitq.entities.Inventory;
 import com.hexaware.quitq.service.IInventoryService;
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/api/inventory")
@@ -41,16 +45,34 @@ public class InventoryRestController {
     public ResponseEntity<InventoryDTO> updateInventory(@RequestBody InventoryDTO inventoryDTO) {
         logger.info("updateInventory is called with ID: " + inventoryDTO.getInventoryId());
 
-        if (inventoryDTO.getInventoryId() == 0) {
+        // Validate inventoryId
+        if (inventoryDTO.getInventoryId() == 0 || inventoryDTO.getInventoryId() == 0) {
             logger.error("Invalid Inventory ID: ID cannot be zero or null");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
 
+        // Proceed with the update
         Inventory inventory = convertToEntity(inventoryDTO);
         Inventory updatedInventory = service.updateInventory(inventory);
         InventoryDTO updatedInventoryDTO = convertToDTO(updatedInventory);
         return new ResponseEntity<>(updatedInventoryDTO, HttpStatus.OK);
     }
+
+    
+//    @PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+//    public ResponseEntity<InventoryDTO> updateInventory(@RequestBody InventoryDTO inventoryDTO) {
+//        logger.info("updateInventory is called with ID: " + inventoryDTO.getInventoryId());
+//
+//        if (inventoryDTO.getInventoryId() == 0) {
+//            logger.error("Invalid Inventory ID: ID cannot be zero or null");
+//            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+//        }
+//
+//        Inventory inventory = convertToEntity(inventoryDTO);
+//        Inventory updatedInventory = service.updateInventory(inventory);
+//        InventoryDTO updatedInventoryDTO = convertToDTO(updatedInventory);
+//        return new ResponseEntity<>(updatedInventoryDTO, HttpStatus.OK);
+//    }
 
 
 //    @PutMapping(value = "/update", consumes = "application/json", produces = "application/json")

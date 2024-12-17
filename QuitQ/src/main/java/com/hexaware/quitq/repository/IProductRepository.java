@@ -15,5 +15,9 @@ public interface IProductRepository extends JpaRepository<Product,Integer> {
     List<Product> findProductsByPriceRange(double min, double max);
 
     List<Product> findByNameContainingIgnoreCase(String name);
+    
+    @Query("SELECT p FROM Product p WHERE p.supplier.supplierId =:id")
+    List<Product> findProductsBySupplierId(Integer id);
+ 
 }
 

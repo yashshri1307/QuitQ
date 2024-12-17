@@ -76,4 +76,10 @@ public class ProductRestController {
 	{
 		return service.searchProductByName(name);
 	}
+	
+	@GetMapping("/getproductBySupplierId/{id}")
+	public List<Product> getproductBySupplierId(@PathVariable Integer id)
+	{
+		return service.getProductBySupplierId(id);
+	}
  }

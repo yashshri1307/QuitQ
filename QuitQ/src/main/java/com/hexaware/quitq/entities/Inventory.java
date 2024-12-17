@@ -1,6 +1,7 @@
-/* author : Yadnesh Shewale
- * date : 02/11/2024
- * description : inventory entity class is created
+/* File: Inventory Entity
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-05
+ * Description: Inventory Entity With Validations
  */
 
 package com.hexaware.quitq.entities;

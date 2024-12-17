@@ -1,0 +1,27 @@
+<div class="admins-details">
+    <h2>All Admins</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let admin of admin; let i = index">
+            <td>{{ admin.name }}</td>
+          <td>{{ admin.email }}</td>
+          <td>{{ admin.role }}</td>
+         
+          <td>
+          <button class="delete-btn" (click)="deleteAdmin(admin.adminId)">
+            Delete
+          </button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

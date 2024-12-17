@@ -14,6 +14,8 @@ public interface IProductService {
 	public Product addProduct(ProductDTO productDTO);
     
 	public Product getProductById(Integer id);
+	
+	public List<Product> getProductBySupplierId(Integer id);
     
 	public List<Product> getAllProducts();
     

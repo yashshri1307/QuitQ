@@ -1,6 +1,7 @@
-/* author : Yadnesh Shewale
- * date : 13/12/2024
- * description : ProductCategory service implementation.
+/* File: ProductCategoryServiceImp
+ * Author: Yadnesh shewale
+ * Date Created: 2024-11-12
+ * Description: Service Interface implementation for product category           
  */
 package com.hexaware.quitq.service;
 

@@ -1,7 +1,7 @@
 export interface ProductCategory {
-    id?: number; 
+    id?: number; // Optional if ID is auto-generated
     name: string;
     description: string;
-    
+    // Add other fields as necessary
   }
   

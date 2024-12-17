@@ -34,8 +34,10 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" (click)="viewProfile()">View Profile</a>
+                    <a *ngIf="role === 'supplier'" class="dropdown-item" (click)="myoption()">Manage Orders</a>
                     <a *ngIf="role === 'supplier'" class="dropdown-item" (click)="myOrders()">View Dashboard</a>
                     <a *ngIf="role === 'customer'" class="dropdown-item" (click)="myOrders()">My Orders</a>
+                    <a *ngIf="role === 'admin'" class="dropdown-item" (click)="myOrders()">View Dashboard</a>
                     
                     <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
                 </div>

@@ -1,6 +1,8 @@
-/* author : Yadnesh Shewale
- * date : 02/11/2024
- * description : inventory dto class is created 
+/* File: Inventory DTO
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-11
+ * Description: Inventory DTO With Validations 
+ *              For Data Transfer between Layers             
  */
 
 package com.hexaware.quitq.dto;

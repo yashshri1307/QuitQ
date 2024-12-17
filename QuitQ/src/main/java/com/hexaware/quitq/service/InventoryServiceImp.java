@@ -24,24 +24,46 @@ public class InventoryServiceImp implements IInventoryService {
     public Inventory addInventory(Inventory inventory) {
         return repository.save(inventory);
     }
-
+    
     @Override
     public Inventory updateInventory(Inventory inventory) {
+    	System.out.println(inventory);
+        // Check if inventory exists before updating
         Optional<Inventory> existingInventory = repository.findById(inventory.getInventoryId());
 
         if (existingInventory.isEmpty()) {
             throw new RuntimeException("Inventory not found for ID: " + inventory.getInventoryId());
         }
 
-        // Update fields as needed
+        // Update the existing inventory
         Inventory updatedInventory = existingInventory.get();
         updatedInventory.setProductId(inventory.getProductId());
         updatedInventory.setStockQuantity(inventory.getStockQuantity());
         updatedInventory.setStockValue(inventory.getStockValue());
         updatedInventory.setStatus(inventory.getStatus());
 
+        // Save and return updated inventory
         return repository.save(updatedInventory);
     }
+
+
+//    @Override
+//    public Inventory updateInventory(Inventory inventory) {
+//        Optional<Inventory> existingInventory = repository.findById(inventory.getInventoryId());
+//
+//        if (existingInventory.isEmpty()) {
+//            throw new RuntimeException("Inventory not found for ID: " + inventory.getInventoryId());
+//        }
+//
+//        // Update fields as needed
+//        Inventory updatedInventory = existingInventory.get();
+//        updatedInventory.setProductId(inventory.getProductId());
+//        updatedInventory.setStockQuantity(inventory.getStockQuantity());
+//        updatedInventory.setStockValue(inventory.getStockValue());
+//        updatedInventory.setStatus(inventory.getStatus());
+//
+//        return repository.save(updatedInventory);
+//    }
 
     @Override
     public Inventory getInventoryById(int inventoryId) {

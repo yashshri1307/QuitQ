@@ -1,6 +1,7 @@
-/* author : Yadnesh Shewale
- * date : 13/12/2024
- * description : Orders entity class with necessary fields and mapping.
+/* File: orders Entity
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-05
+ * Description: orders Entity With Validations
  */
 
 package com.hexaware.quitq.entities;

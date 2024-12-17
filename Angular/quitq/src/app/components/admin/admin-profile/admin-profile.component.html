@@ -4,10 +4,10 @@
 
 <div class="profile-container">
   <div class="profile-header">
-    <img src="assets/admin logo.jpg" alt="Admin Profile Picture" class="profile-picture">
+    <img [src]="male" alt="Admin Profile Picture" class="profile-picture">
     <div>
-      <h2>John Doe</h2>
-      <p>Admin | johndoe@example.com</p>
+      <h2>{{admin.name}}</h2>
+      <p>Admin | {{admin.email}}</p>
     </div>
   </div>
 

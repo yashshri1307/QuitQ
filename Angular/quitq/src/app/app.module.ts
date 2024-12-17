@@ -8,7 +8,6 @@ import { SupplierLoginComponent } from './components/supplier/supplier-login/sup
 import { SupplierDashboardComponent } from './components/supplier/supplier-dashboard/supplier-dashboard.component';
 import { SupplierProfileComponent } from './components/supplier/supplier-profile/supplier-profile.component';
 import { CustomerProfileComponent } from './components/customer/customer-profile/customer-profile.component';
-import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { ProductAddComponent } from './components/product/product-add/product-add.component';
 
@@ -44,6 +43,9 @@ import { DeleteProductCategoryComponent } from './components/product-category/de
 import { DisplayProductCategoryComponent } from './components/product-category/display-product-category/display-product-category.component';
 import { ProductCategoryDashboardComponent } from './components/product-category/product-category-dashboard/product-category-dashboard.component';
 import { UpdateProductCategoryComponent } from './components/product-category/update-product-category/update-product-category.component';
+import { AddAdminComponent } from './components/admin/add-admin/add-admin.component';
+import { AdminDisplayallComponent } from './components/admin/admin-displayall/admin-displayall.component';
+import { PaymentComponent } from './components/payment/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,6 @@ import { UpdateProductCategoryComponent } from './components/product-category/up
     SupplierDashboardComponent,
     SupplierProfileComponent,
     CustomerProfileComponent,
-    ProductListComponent,
     ProductDetailsComponent,
     ProductAddComponent,
     HomeComponent,
@@ -83,7 +84,10 @@ import { UpdateProductCategoryComponent } from './components/product-category/up
     DeleteProductCategoryComponent,
     DisplayProductCategoryComponent,
     ProductCategoryDashboardComponent,
-    UpdateProductCategoryComponent
+    UpdateProductCategoryComponent,
+    AddAdminComponent,
+    AdminDisplayallComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

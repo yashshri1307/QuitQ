@@ -68,6 +68,16 @@ getProductById(id:number): Observable<any[]> {
     })
   );
 }
+getProductBySupplierId(id:number): Observable<any[]> {
+  const token = localStorage.getItem('authToken')!;
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get<any[]>(`${this.baseURL}/getproductBySupplierId/${id}`, { headers }).pipe(
+    catchError((error) => {
+      console.error('Error fetching products:', error);
+      return throwError(() => error);
+    })
+  );
+}
 
 // Delete a product
 deleteProduct(productId: number): Observable<void> {

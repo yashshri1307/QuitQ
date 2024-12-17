@@ -1,11 +1,152 @@
 
 
-
-
-
-
-
 body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.profile-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.profile-header img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.profile-header h2 {
+  margin: 0;
+}
+
+.profile-header p {
+  color: gray;
+  margin-top: 5px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.actions button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #333;
+  color: white;
+  margin-top: 20px;
+}
+
+/* Add Admin Button Styles */
+.add-admin-button {
+  position: absolute; /* Place relative to the header */
+  top: 10px; /* Adjust vertical position */
+  right: 10px; /* Adjust horizontal position */
+  background-color: #28a745; /* Green color */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-admin-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+.add-admin-button:active {
+  background-color: #1e7e34; /* Even darker green when pressed */
+}
+
+/* Ensure the header is positioned relative for absolute positioning of the button */
+header {
+  position: relative;
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* New Button Styles for Manage Buttons */
+.actions button.manage-inventories,
+.actions button.manage-orders,
+.actions button.manage-product-categories {
+  background-color: #007bff; /* Blue background for all Manage buttons */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0; /* Add margin between buttons */
+  border-radius: 5px;
+  cursor: pointer;
+}
+.logout{
+  background-color: #007bff; /* Blue background for all Manage buttons */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0; /* Add margin between buttons */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions button.manage-inventories:hover,
+.actions button.manage-orders:hover,
+.actions button.manage-product-categories:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.actions button.manage-inventories:active,
+.actions button.manage-orders:active,
+.actions button.manage-product-categories:active {
+  background-color: #004085; /* Even darker blue when pressed */
+}
+
+/* Add a bit more spacing between the profile header and the actions section */
+.profile-container .actions {
+  margin-top: 30px; /* Increased margin for better spacing */
+}
+
+
+/* LATEST CAHNGED BY YADNESH BEFORE ADDING 3 BUTTONS  */
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -66,14 +207,14 @@ body {
     color: white;
     margin-top: 20px;
   }
-   
+    */
 
   /* Add Admin Button Styles */
-.add-admin-button {
-  position: absolute; /* Place relative to the header */
-  top: 10px; /* Adjust vertical position */
-  right: 10px; /* Adjust horizontal position */
-  background-color: #28a745; /* Green color */
+/* .add-admin-button {
+  position: absolute; 
+  top: 10px;
+  right: 10px; 
+  background-color: #28a745; 
   color: white;
   border: none;
   padding: 10px 15px;
@@ -81,22 +222,22 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-}
+} */
 
-.add-admin-button:hover {
-  background-color: #218838; /* Darker green on hover */
-  transform: scale(1.1); /* Slight zoom effect */
-}
+/* .add-admin-button:hover {
+  background-color: #218838; 
+  transform: scale(1.1); 
+} */
 
-.add-admin-button:active {
-  background-color: #1e7e34; /* Even darker green when pressed */
-}
+/* .add-admin-button:active {
+  background-color: #1e7e34; 
+} */
 
 /* Ensure the header is positioned relative for absolute positioning of the button */
-header {
+/* header {
   position: relative;
   background-color: #333;
   color: white;
   padding: 1rem;
   text-align: center;
-}
+} */

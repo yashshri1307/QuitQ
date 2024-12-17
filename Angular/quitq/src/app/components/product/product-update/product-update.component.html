@@ -1,4 +1,3 @@
-
 <div class="product-update-container">
   <h2>Update Product</h2>
 
@@ -10,7 +9,7 @@
   </div>
 
   <!-- Product Details (editable fields) -->
-  <div *ngIf="product && product.name" class="product-details">
+  <div *ngIf="isAuthorized; else unauthorizedTemplate" class="product-details">
     <!-- Product Name -->
     <div class="product-field">
       <label>Name:</label>
@@ -51,6 +50,10 @@
     <button (click)="submit()">Submit</button>
   </div>
 
-  <!-- Error Message -->
-  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  <!-- Unauthorized Access Template -->
+  <ng-template #unauthorizedTemplate>
+    <p class="error">{{ errorMessage }}</p>
+  </ng-template>
+
 </div>
+

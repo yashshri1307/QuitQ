@@ -33,6 +33,9 @@ import { AddInventoryComponent } from './components/inventory/add-inventory/add-
 import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AddAdminComponent } from './components/admin/add-admin/add-admin.component';
+import { AdminDisplayallComponent } from './components/admin/admin-displayall/admin-displayall.component';
+import { PaymentComponent } from './components/payment/payment/payment.component';
 
 const routes: Routes = [
   { path: 'home', component:HomeComponent},
@@ -107,9 +110,10 @@ const routes: Routes = [
     path: 'delete-inventory', component:NavbarComponent,
     children: [ { path:'', component:DeleteInventoryComponent  } ]
   },
-
-  { path: 'inventory-dashboard', component:InventoryDashboardComponent },
-
+  {
+    path: 'inventory-dashboard', component:NavbarComponent,
+    children: [ { path:'', component:InventoryDashboardComponent  } ]
+  },
 
   {
     path: 'add-orders', component:NavbarComponent,
@@ -128,16 +132,10 @@ const routes: Routes = [
     children: [ { path:'', component:DisplayOrdersComponent  } ]
   },
 
-
-
-  { path: 'orders-dashboard', component:OrdersDashboardComponent },
-
-
-
-
-
-
-
+  {
+    path: 'orders-dashboard', component:NavbarComponent,
+    children: [ { path:'', component:OrdersDashboardComponent  } ]
+  },
 
   {
     path: 'add-product-category', component:NavbarComponent,
@@ -160,10 +158,22 @@ const routes: Routes = [
     children: [ { path:'', component:UpdateProductCategoryComponent  } ]
   },
 
-
-  { path: 'product-category-dashboard', component:ProductCategoryDashboardComponent },
-  
-
+  {
+    path: 'product-category-dashboard', component:NavbarComponent,
+    children: [ { path:'', component:ProductCategoryDashboardComponent } ]
+  },
+  {
+    path: 'add-admin', component:NavbarComponent,
+    children: [ { path:'', component:AddAdminComponent } ]
+  },
+  {
+    path: 'admin-displayall', component:NavbarComponent,
+    children: [ { path:'', component:AdminDisplayallComponent } ]
+  },
+  {
+    path: 'payment', component:NavbarComponent,
+    children: [ { path:'', component:PaymentComponent } ]
+  },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 

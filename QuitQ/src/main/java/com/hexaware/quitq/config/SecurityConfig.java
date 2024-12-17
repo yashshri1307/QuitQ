@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .cors().and()
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/v3/api-docs/**","/swagger-ui/**","/api/customer/add","/api/product/getall","/api/fetch-username", "/api/supplier/add", "/api/customer/login", "/api/supplier/login", "/api/admin/login")
+                .requestMatchers("/v3/api-docs/**","/swagger-ui/**","/api/customer/add","/api/product/getall","/api/fetch-username", "/api/supplier/add", "/api/customer/login", "/api/supplier/login", "/api/admin/login","/api/admins/add", "/api/orders/addorder")
                 .permitAll()
                 .requestMatchers("/api/customer/**").hasAuthority("CUSTOMER")
                 .requestMatchers("/api/orders/**").hasAuthority("CUSTOMER")

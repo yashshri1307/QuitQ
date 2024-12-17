@@ -1,9 +1,8 @@
-/* author : Yadnesh Shewale
- * date : 02/11/2024
- * description : Admin entity class is created
+/* File: Admin Entity
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-05
+ * Description: Admin Entity With Validations
  */
-
-
 
 package com.hexaware.quitq.entities;
 

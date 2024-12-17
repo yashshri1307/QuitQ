@@ -1,9 +1,14 @@
-
+/* File: IAdminServiceImp
+ * Author: Yadnesh shewale
+ * Date Created: 2024-11-12
+ * Description: Service Interface for Admin           
+ */
 
 package com.hexaware.quitq.service;
 
 import com.hexaware.quitq.dto.AdminDTO;
 import com.hexaware.quitq.entities.Admin;
+import com.hexaware.quitq.entities.Customer;
 
 import java.util.List;
 
@@ -14,6 +19,10 @@ public interface IAdminService {
     AdminDTO updateAdmin(AdminDTO adminDTO);
 
     AdminDTO getAdminById(int adminId);
+    
+    Admin getAdminByEmail(String email);
+    
+    public String deleteAdminById(Integer id);
 
     List<AdminDTO> getAllAdmins();
 

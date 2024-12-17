@@ -61,13 +61,14 @@ export class CartComponent implements OnInit {
       this.router.navigate(['/customer-login']);
     } else {
   
-      this.order.customerId=19;
-      this.order.status="PENDING";
-      this.order.totalAmount=this.total;
-      // Proceed with checkout process
-      this.orderService.addOrder(this.order);
-      console.log('yes did');
+      // this.order.customerId=19;
+      // this.order.status="PENDING";
+      // this.order.totalAmount=this.total;
+      // // Proceed with checkout process
+      // this.orderService.addOrder(this.order);
+      // console.log('yes did');
       // You can add checkout logic here
+      this.router.navigate(['/payment']);
     }
   }
 }

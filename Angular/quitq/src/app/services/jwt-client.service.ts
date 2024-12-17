@@ -33,15 +33,12 @@ export class JwtClientService {
   }
 
   authorizeRequest(token: string, endpoint: string): Observable<any> {
-    console.log('Token being sent by cusservice:', token);
-    console.log('endpoint being sent by cusservice:', endpoint);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
       'Access-Control-Allow-Origin': 'http://localhost:4200'
     });
 
-    console.log('Headers being sent with request:', headers);
     return this.http.get(this.baseURL + endpoint, { headers });
   }
 }

@@ -1,6 +1,7 @@
-/* author : Yadnesh Shewale
- * date : 13/12/2024
- * description : ProductCategory entity for database mapping.
+/* File: ProductCategory Entity
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-05
+ * Description: ProductCategory Entity With Validations
  */
 package com.hexaware.quitq.entities;
 

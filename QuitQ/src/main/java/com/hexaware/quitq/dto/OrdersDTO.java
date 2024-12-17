@@ -1,6 +1,8 @@
-/* author : Yadnesh Shewale
- * date : 13/12/2024
- * description : Orders DTO class is created with necessary fields and conversion methods.
+/* File: orders DTO
+ * Author: Yadnesh Shewale
+ * Date Created: 2024-11-11
+ * Description: orders DTO With Validations 
+ *              For Data Transfer between Layers             
  */
 
 package com.hexaware.quitq.dto;
