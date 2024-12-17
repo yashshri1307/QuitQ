@@ -1,0 +1,54 @@
+
+<div class="add-container">
+    <h2>Add Product</h2>
+
+<form [formGroup]="addform" (ngSubmit)="add()">
+
+    <div>
+        <label>Name:</label>
+        <input type="text" formControlName="name">
+        <div class="errorMessage" *ngIf="f['name'].touched && f['name'].errors">
+        <small *ngIf="f['name'].errors['required']">Name is required</small>
+        </div>
+    </div>
+
+    <div>
+        <label>Description:</label>
+        <input type="text" formControlName="description">
+        <div class="errorMessage" *ngIf="f['description'].touched && f['description'].errors">
+        <small *ngIf="f['description'].errors['required']">Description is required</small>
+
+        </div>
+    </div>
+
+    <div>
+        <label>Price:</label>
+        <input type="number" step="0.01" formControlName="price">
+        <div class="errorMessage" *ngIf="f['price'].touched && f['price'].errors">
+        <small *ngIf="f['price'].errors['required']">Price is required</small>
+        </div>
+    </div>
+
+    <div>
+        <label>Stock:</label>
+        <input type="number" step="0.01" formControlName="stock">
+        <div class="errorMessage" *ngIf="f['stock'].touched && f['stock'].errors">
+        <small *ngIf="f['stock'].errors['required']">Stock is required</small>
+        </div>
+    </div>   
+
+    <div>
+        <label>ImageURL:</label>
+        <input type="text"  formControlName="imageUrl">
+        <div class="errorMessage" *ngIf="f['imageUrl'].touched && f['imageUrl'].errors">
+        <small *ngIf="f['imageUrl'].errors['required']">imageUrl is required</small>
+        </div>
+    </div> 
+
+    <button [disabled]="addform.invalid">Submit</button>
+
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</form>
+
+</div>
+

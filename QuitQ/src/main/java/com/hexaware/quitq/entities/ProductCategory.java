@@ -1,10 +1,7 @@
-
 /* author : Yadnesh Shewale
- * date : 02/11/2024
- * description : product category entity class is created 
+ * date : 13/12/2024
+ * description : ProductCategory entity for database mapping.
  */
-
-
 package com.hexaware.quitq.entities;
 
 import jakarta.persistence.Column;
@@ -16,31 +13,33 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "product_categories")  // Specifies the table name in the database
+@Table(name = "product_categories")
 public class ProductCategory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Automatically generate ID using auto-increment
-    @Column(name = "category_id")  // Maps to the "category_id" column in the DB
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id")
     private int categoryId;
 
     @Column(name = "categoryname", nullable = false, length = 30)
     private String name;
 
-    @Size(min = 5, max = 20, message = "productdescription must be min10 and max200 size")
+    @Size(min = 5, max = 200, message = "Product description must be between 5 and 200 characters")
+    @Column(name = "description", nullable = false)
     private String description;
 
+    // Default constructor
     public ProductCategory() {
-        super();
     }
 
+    // Parameterized constructor
     public ProductCategory(int categoryId, String name, String description) {
-        super();
         this.categoryId = categoryId;
         this.name = name;
         this.description = description;
     }
 
+    // Getters and Setters
     public int getCategoryId() {
         return categoryId;
     }

@@ -6,8 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import com.hexaware.quitq.entities.UserInfo;
+import com.hexaware.quitq.repository.UserInfoRepository;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -17,6 +21,9 @@ import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JwtService {
+	
+	@Autowired
+	UserInfoRepository userInfoRepository;
 
 	public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
 
@@ -25,10 +32,11 @@ public class JwtService {
 	public String createToken(Map<String, Object> claims, String username) {
 
 		return Jwts.builder().setClaims(claims).setSubject(username).setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
+				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 600 * 300))
 				.signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
 
 	}
+
 
 	private Key getSignKey() {
 
@@ -44,6 +52,25 @@ public class JwtService {
 		return createToken(claims, username);
 
 	}
+//	public String generateToken(String username, String role) {
+//	    Map<String, Object> claims = new HashMap<>();
+//	    return createToken(claims, username, role);
+//	}
+	
+	
+	public String getUsernameFromToken(String token) {
+        // Extract the username from the JWT token
+        String jwtToken = token.substring(7); // Remove "Bearer " from the token
+        
+        String username = extractUsername(jwtToken);
+
+        // Fetch the user info from the repository using the extracted username (email)
+        UserInfo userInfo = userInfoRepository.findByEmail(username)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Return the username or any user-specific details you need
+        return userInfo.getName();
+    }
 
 	
 	// BELOW METHODS HELP TO READ TOKEN FROM CLIENT AND GET Claims , username, exp time etc from token

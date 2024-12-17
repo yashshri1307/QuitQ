@@ -3,7 +3,6 @@
  * description : inventory dto class is created 
  */
 
-
 package com.hexaware.quitq.dto;
 
 import jakarta.validation.constraints.NotNull;
@@ -30,10 +29,12 @@ public class InventoryDTO {
     @Size(min = 3, max = 20, message = "Status must be between 3 and 20 characters long")
     private String status;
 
+    // Default constructor
     public InventoryDTO() {
         super();
     }
 
+    // Parameterized constructor
     public InventoryDTO(int inventoryId, int productId, int stockQuantity, double stockValue, String status) {
         super();
         this.inventoryId = inventoryId;
@@ -43,6 +44,7 @@ public class InventoryDTO {
         this.status = status;
     }
 
+    // Getters and setters
     public int getInventoryId() {
         return inventoryId;
     }

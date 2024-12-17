@@ -11,6 +11,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.hexaware.quitq.dto.SupplierDTO;
 import com.hexaware.quitq.entities.Supplier;
 import com.hexaware.quitq.service.ISupplierService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/supplier")
 public class SupplierRestController {
@@ -33,7 +35,7 @@ public class SupplierRestController {
 	
 	Logger logger=LoggerFactory.getLogger(SupplierRestController.class);
 	
-	@PostMapping("/addsupplier")
+	@PostMapping("/add")
 	public Supplier addSupplier(@RequestBody SupplierDTO supplierDTO )
 	{
 		logger.info("Supplier Rest controller executed");

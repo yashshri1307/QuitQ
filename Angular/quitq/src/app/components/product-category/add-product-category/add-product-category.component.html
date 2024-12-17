@@ -1,0 +1,66 @@
+
+<div class="add-product-category-container">
+  <h2>Add Product Category</h2>
+  <form [formGroup]="productCategoryForm" (ngSubmit)="addProductCategory()">
+    <div class="form-group">
+      <label for="name">Category Name:</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        placeholder="Enter category name"
+      />
+      <div *ngIf="productCategoryForm.get('name')?.invalid && productCategoryForm.get('name')?.touched" class="error">
+        Name is required and must be at least 3 characters long.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Enter category description"
+      ></textarea>
+      <div *ngIf="productCategoryForm.get('description')?.invalid && productCategoryForm.get('description')?.touched" class="error">
+        Description is required and must be at least 5 characters long.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="productCategoryForm.invalid">
+      Add Category
+    </button>
+  </form>
+</div>
+
+
+
+
+<!-- <div class="form-container">
+  <form (ngSubmit)="addCategory()">
+    <div class="form-group">
+      <label for="name">Category Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        [(ngModel)]="productCategory.name"
+        name="name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Category Description</label>
+      <textarea
+        id="description"
+        class="form-control"
+        [(ngModel)]="productCategory.description"
+        name="description"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Category</button>
+  </form>
+</div> -->

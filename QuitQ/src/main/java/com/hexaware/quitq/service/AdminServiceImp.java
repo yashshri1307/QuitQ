@@ -1,20 +1,25 @@
 /* author : Yadnesh Shewale
  * date : 09/11/2024
- * 
  */
+
 package com.hexaware.quitq.service;
 
-import java.util.List;
-
+import com.hexaware.quitq.dto.AdminDTO;
+import com.hexaware.quitq.entities.Admin;
+import com.hexaware.quitq.entities.UserInfo;
+import com.hexaware.quitq.exception.AdminNotFoundException;
+import com.hexaware.quitq.exception.AdminAlreadyExistsException;  // Uncomment this if you want to use this exception
+import com.hexaware.quitq.repository.IAdminRepository;
+import com.hexaware.quitq.repository.UserInfoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.hexaware.quitq.entities.Admin;
-import com.hexaware.quitq.repository.IAdminRepository;
-
 import jakarta.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -23,180 +28,98 @@ public class AdminServiceImp implements IAdminService {
     @Autowired
     private IAdminRepository adminRepo;
 
-    Logger logger = LoggerFactory.getLogger(AdminServiceImp.class);
-
-    @Override
-    public Admin addAdmin(Admin admin) {
-        logger.info("addAdmin service is called");
-        
-        if (validateAdmin(admin)) {
-            return adminRepo.save(admin);
-        } else {
-            logger.error("Failed to add Admin: Validation failed");
-            throw new IllegalArgumentException("Invalid Admin data");
-        }
-    }
-
-    @Override
-    public Admin updateAdmin(Admin admin) {
-        logger.info("updateAdmin service is called");
-
-        if (validateAdmin(admin)) {
-            return adminRepo.save(admin);
-        } else {
-            logger.error("Failed to update Admin: Validation failed");
-            throw new IllegalArgumentException("Invalid Admin data");
-        }
-    }
-
-    @Override
-    public Admin getAdminById(int adminId) {
-        logger.info("getAdminById service is called for id: " + adminId);
-        return adminRepo.findById(adminId).orElse(null);
-    }
-
-    @Override
-    public String deleteAdminById(int adminId) {
-        logger.warn("deleteAdminById service is called for id: " + adminId);
-        adminRepo.deleteById(adminId);
-        logger.debug("Admin record deleted for id: " + adminId);
-        return "Admin Record Deleted";
-    }
-
-    @Override
-    public List<Admin> getAllAdmins() {
-        logger.info("getAllAdmins service is called");
-        return adminRepo.findAll();
-    }
-
-    @Override
-    public List<Admin> getByRole(String role) {
-        logger.info("getByRole service is called for role: " + role);
-        return adminRepo.findByRole(role);
-    }
-
-    @Override
-    public Admin getByEmail(String email) {
-        logger.info("getByEmail service is called for email: " + email);
-        return adminRepo.findByEmail(email).orElse(null);
-    }
-
-    @Override
-    public int deleteByEmail(String email) {
-        logger.warn("deleteByEmail service is called for email: " + email);
-        int count = adminRepo.deleteByEmail(email);
-        logger.debug("Admin record(s) deleted for email: " + email);
-        return count;
-    }
-
-    // Input validation for Admin
-    public static boolean validateAdmin(Admin admin) {
-        boolean isValid = false;
-
-        if (admin != null && admin.getName() != null && admin.getName().length() >= 3 &&
-            admin.getEmail() != null && admin.getEmail().contains("@")) {
-            isValid = true;
-        }
-
-        return isValid;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*package com.hexaware.ecommerce.services;
-
-import java.util.List;
-
-import com.hexaware.ecommerce.entities.Admin;
-import com.hexaware.ecommerce.repository.AdminRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import jakarta.transaction.Transactional;
-
-@Service
-@Transactional
-public class AdminServiceImp implements IAdminService {
+    @Autowired
+    private UserInfoRepository userRepo;
 
     @Autowired
-    private AdminRepository adminRepo;
+    private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private UserRepository userRepo; // Define and autowire UserRepository
+    private Logger logger = LoggerFactory.getLogger(AdminServiceImp.class);
 
     @Override
-    public Admin addAdmin(Admin admin) {
-        return adminRepo.save(admin);
+    public AdminDTO addAdmin(AdminDTO adminDTO) {
+        // Check if admin already exists with the same email
+        if (adminRepo.findByEmail(adminDTO.getEmail()).isPresent()) {
+            logger.warn("Admin with email " + adminDTO.getEmail() + " already exists.");
+            throw new AdminAlreadyExistsException("Admin with email already exists.");  // Throw the exception
+        }
+
+        // Convert AdminDTO to Admin entity
+        Admin admin = toEntity(adminDTO);
+        admin.setPassword(passwordEncoder.encode(adminDTO.getPassword()));  // Encode password
+        Admin savedAdmin = adminRepo.save(admin);
+
+        // Save user info
+        UserInfo userInfo = new UserInfo();
+        userInfo.setId(savedAdmin.getAdminId());
+        userInfo.setName(savedAdmin.getName());
+        userInfo.setEmail(savedAdmin.getEmail());
+        userInfo.setPassword(savedAdmin.getPassword());
+        userInfo.setRoles(adminDTO.getRole());
+        userRepo.save(userInfo);
+
+        logger.info("Admin added: " + adminDTO);
+        return toDTO(savedAdmin);
     }
 
     @Override
-    public Admin updateAdmin(Admin admin) {
-        return adminRepo.save(admin);
+    public AdminDTO updateAdmin(AdminDTO adminDTO) {
+        Admin existingAdmin = adminRepo.findById(adminDTO.getAdminId())
+                .orElseThrow(() -> new AdminNotFoundException("Admin not found with id: " + adminDTO.getAdminId()));
+
+        existingAdmin.setEmail(adminDTO.getEmail());
+        existingAdmin.setRole(adminDTO.getRole());
+        if (adminDTO.getPassword() != null && !adminDTO.getPassword().isEmpty()) {
+            existingAdmin.setPassword(passwordEncoder.encode(adminDTO.getPassword()));  // Only update if password is provided
+        }
+
+        Admin updatedAdmin = adminRepo.save(existingAdmin);
+
+        // Update UserInfo
+        UserInfo userInfo = userRepo.findByEmail(existingAdmin.getEmail())
+                .orElseThrow(() -> new AdminNotFoundException("UserInfo not found with email: " + existingAdmin.getEmail()));
+        userInfo.setRoles(adminDTO.getRole());
+        if (adminDTO.getPassword() != null && !adminDTO.getPassword().isEmpty()) {
+            userInfo.setPassword(existingAdmin.getPassword());
+        }
+        userRepo.save(userInfo);
+
+        logger.info("Admin updated: " + adminDTO);
+        return toDTO(updatedAdmin);
     }
 
     @Override
-    public Admin getAdminById(int adminId) {
-        return adminRepo.findById(adminId).orElse(null);
+    public AdminDTO getAdminById(int adminId) {
+        Admin admin = adminRepo.findById(adminId)
+                .orElseThrow(() -> new AdminNotFoundException("Admin not found with id: " + adminId));
+        return toDTO(admin);
     }
 
     @Override
-    public String deleteAdminById(int adminId) {
-        adminRepo.deleteById(adminId);
-        return "Admin Record Deleted";
+    public List<AdminDTO> getAllAdmins() {
+        return adminRepo.findAll().stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Admin> getAllAdmins() {
-        return adminRepo.findAll();
+    public AdminDTO toDTO(Admin admin) {
+        AdminDTO adminDTO = new AdminDTO();
+        adminDTO.setAdminId(admin.getAdminId());  // Include adminId
+        adminDTO.setName(admin.getName());
+        adminDTO.setEmail(admin.getEmail());
+        adminDTO.setRole(admin.getRole());
+        return adminDTO;
     }
 
     @Override
-    public List<Admin> getByRole(String role) {
-        return adminRepo.findByRole(role);
+    public Admin toEntity(AdminDTO adminDTO) {
+        Admin admin = new Admin();
+        admin.setAdminId(adminDTO.getAdminId());  // Include adminId
+        admin.setName(adminDTO.getName());
+        admin.setEmail(adminDTO.getEmail());
+        admin.setPassword(adminDTO.getPassword());  // Password will be encoded later
+        admin.setRole(adminDTO.getRole());
+        return admin;
     }
-
-    @Override
-    public Admin getByEmail(String email) {
-        return adminRepo.findByEmail(email).orElse(null);
-    }
-
-    @Override
-    public int deleteByEmail(String email) {
-        return adminRepo.deleteByEmail(email);
-    }
-
-    
 }
-*/

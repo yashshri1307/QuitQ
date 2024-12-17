@@ -18,7 +18,6 @@ public class ProductDTO {
     @NotNull 
     private int supplierId;
 
-    @Pattern(regexp = "[A-Za-z]+", message = "Name must contain only alphabetic characters")
     private String name;
 
     private int categoryId;
@@ -31,16 +30,17 @@ public class ProductDTO {
 
     @Size(max = 200, message = "Description can't exceed 200 characters")
     private String description;
+    
+    private String imageUrl; 
 
 	public ProductDTO() {
 		super();
 	}
 
-	public ProductDTO(int productId, @NotNull int supplierId,
-			@Pattern(regexp = "[A-Za-z]+", message = "Name must contain only alphabetic characters") String name,
-			int categoryId, @Positive(message = "Price must be positive") double price,
+	public ProductDTO(int productId, @NotNull int supplierId, String name, int categoryId,
+			@Positive(message = "Price must be positive") double price,
 			@Min(value = 0, message = "Stock cannot be negative") int stock,
-			@Size(max = 200, message = "Description can't exceed 200 characters") String description) {
+			@Size(max = 200, message = "Description can't exceed 200 characters") String description, String imageUrl) {
 		super();
 		this.productId = productId;
 		this.supplierId = supplierId;
@@ -49,7 +49,10 @@ public class ProductDTO {
 		this.price = price;
 		this.stock = stock;
 		this.description = description;
+		this.imageUrl = imageUrl;
 	}
+
+
 
 
 
@@ -57,88 +60,73 @@ public class ProductDTO {
 		return productId;
 	}
 
-
-
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
-
-
 
 	public int getSupplierId() {
 		return supplierId;
 	}
 
-
-
 	public void setSupplierId(int supplierId) {
 		this.supplierId = supplierId;
 	}
-
-
 
 	public String getName() {
 		return name;
 	}
 
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
 
 	public int getCategoryId() {
 		return categoryId;
 	}
 
-
-
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-
-
 
 	public double getPrice() {
 		return price;
 	}
 
-
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-
 
 	public int getStock() {
 		return stock;
 	}
 
-
-
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
-
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	@Override
 	public String toString() {
 		return "ProductDTO [productId=" + productId + ", supplierId=" + supplierId + ", name=" + name + ", categoryId="
-				+ categoryId + ", price=" + price + ", stock=" + stock + ", description=" + description + "]";
-	}  
+				+ categoryId + ", price=" + price + ", stock=" + stock + ", description=" + description + ", imageUrl="
+				+ imageUrl + "]";
+	}
+
+     
     
 }

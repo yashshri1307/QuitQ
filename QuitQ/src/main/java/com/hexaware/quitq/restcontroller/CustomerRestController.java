@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ import com.hexaware.quitq.entities.Customer;
 import com.hexaware.quitq.exception.CustomerNotFoundException;
 import com.hexaware.quitq.service.ICustomerService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerRestController {
@@ -37,7 +39,7 @@ public class CustomerRestController {
 	
 	Logger logger=LoggerFactory.getLogger(CustomerRestController.class);
 	
-	@PostMapping("/addcustomer")
+	@PostMapping("/add")
 	public Customer addcustomer(@RequestBody CustomerDTO customerDTO)
 	{
 		logger.info("Customer Rest Controller executed");
@@ -45,7 +47,7 @@ public class CustomerRestController {
 		return service.addCustomer(customerDTO);
 	}
 	
-	@GetMapping("/getcustomer/{id}")
+	@GetMapping("/get/{id}")
 	public Customer getcustomerById(@PathVariable Integer id)
 	{
 		return service.getCustomerById(id);
@@ -79,6 +81,7 @@ public class CustomerRestController {
 	@GetMapping("/getcustomerByEmail/{email}")
 	public Customer getcustomerbyEmail(@PathVariable String email)
 	{
+		System.out.println("yoyo in the customercontroller");
 		return service.getCustomerByEmail(email);
 	}
 	

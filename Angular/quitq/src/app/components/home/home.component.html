@@ -1,0 +1,127 @@
+<div *ngIf="!loggedIn">
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <a class="navbar-brand" href="#">
+        <img [src]="logo" alt="QuitQ Logo" class="logo" />
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <!-- Search Bar -->
+            <li class="nav-item search-item">
+                <div class="search-container">
+                    <input class="form-control search-bar" type="search" placeholder="Search For Products, Brands and More..."  [(ngModel)]="searchQuery" 
+                    (input)="onSearchProducts()"  aria-label="Search"/>
+                    <button class="search-icon">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </li>
+
+            <!-- Account Icon with Login -->
+            <li class="nav-item">
+                <a [routerLink]="['/customer-login']" class="nav-link">
+                    <i class="fa fa-user"></i> Login
+                </a>
+            </li>
+
+            <!-- Cart Icon -->
+            <li class="nav-item">
+                <a class="cart-icon" [routerLink]="['/cart']">
+                    <i class="fa fa-shopping-cart"></i><span class="cart-text">Cart</span>
+                </a>
+            </li>
+
+            <!-- Become a Seller Button -->
+            <li class="nav-item">
+                <a [routerLink]="['/supplier-login']" class="nav-link become-seller-btn">Become a Seller</a>
+            </li>
+
+            <!-- Three Vertical Dots for Admin Login -->
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="adminDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-ellipsis-v"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                    <a class="dropdown-item" [routerLink]="['/admin-login']" >Admin Login</a>
+                </div>
+            </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <app-navbar *ngIf="loggedIn"></app-navbar>
+  <div class="carousel">
+    <!-- Your carousel content here -->
+  </div>
+  
+  <div class="categories-section">
+    <div class="category-item">
+      <img src="assets/image1.jpg" alt="Category 1">
+      <span>  Grocery</span>
+    </div>
+    <div class="category-item">
+      <img src="assets/image2.jpg" alt="Category 2">
+      <span>  Mobiles</span>
+    </div>
+    <div class="category-item">
+      <img src="assets/image3.jpg" alt="Category 3">
+      <span>  Fashion</span>
+    </div>
+    <div class="category-item">
+      <img src="assets/image4.jpg" alt="Category 4">
+      <span>  Electronics</span>
+    </div>
+    <div class="category-item">
+      <img src="assets/image5.jpg" alt="Category 5">
+      <span>  Home & Furniture</span>
+    </div>
+    <div class="category-item">
+      <img src="assets/image6.jpg" alt="Category 6">
+      <span>  Appliances</span>
+    </div>
+    <div class="category-item">
+      <img src="assets/image7.jpg" alt="Category 7">
+      <span>  Toys</span>
+    </div>
+  </div>
+  
+<!-- Full-width image carousel with arrows -->
+<div class="carousel-container">
+    <!-- Left arrow -->
+    <div class="arrow left-arrow" (click)="prevImage()">
+      &#10094;
+    </div>
+    
+    <!-- Images -->
+    <div class="image-slider">
+      <img *ngFor="let image of carouselImages; let i = index" 
+           [src]="'assets/' + image" 
+           [class.active]="i === currentImageIndex" />
+    </div>
+  
+    <!-- Right arrow -->
+    <div class="arrow right-arrow" (click)="nextImage()">
+      &#10095;
+    </div>
+  </div>
+
+<div class="product-display">
+  <div *ngFor="let product of filteredProducts" class="product-card">
+    <img [src]="'assets/' + product.imageUrl" alt="{{ product.name }}" />
+    <p class="product-name">{{ product.name }}</p>
+    <p class="product-price">Price: ₹{{ product.price | number}}</p>
+    
+    <!-- Button container for aligning buttons horizontally -->
+    <div class="button-container">
+      <button type="button" class="AddCart" (click)="onAddToCart(product)"  >Add to Cart</button>
+      <button type="button" class="BuyNow">Buy Now</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  
+

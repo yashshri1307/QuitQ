@@ -22,6 +22,8 @@ public interface ISupplierService {
 	public   String deleteSupplierById(Integer id);
 	
 	public Supplier getSupplierByEmail(String email);
+	
+	public String getUserRole(String username);
 	    
 
 }

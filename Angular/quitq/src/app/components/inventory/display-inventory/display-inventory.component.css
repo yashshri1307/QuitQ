@@ -1,0 +1,25 @@
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .inventory-table th,
+  .inventory-table td {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .inventory-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .odd-row {
+    background-color: #f9f9f9;
+  }
+  
+  .even-row {
+    background-color: #e9ecef;
+  }
+  

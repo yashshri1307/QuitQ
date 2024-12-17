@@ -24,5 +24,8 @@ public interface ICustomerService {
     public Customer getCustomerByEmail(String email);
     
     public Customer updateAddress(Integer id, String address);
+    
+    public String getUserRole(String username);
+
 
 }

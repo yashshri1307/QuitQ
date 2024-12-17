@@ -1,21 +1,16 @@
 /* author : Yadnesh Shewale
- * date : 09/11/2024
- * 
+ * date : 13/12/2024
+ * description : ProductCategory service implementation.
  */
-
 package com.hexaware.quitq.service;
-
-
-import java.util.List;
 
 import com.hexaware.quitq.entities.ProductCategory;
 import com.hexaware.quitq.repository.IProductCategoryRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
-
 import jakarta.transaction.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -42,7 +37,7 @@ public class ProductCategoryServiceImp implements IProductCategoryService {
     @Override
     public String deleteProductCategoryById(int categoryId) {
         repo.deleteById(categoryId);
-        return "Product Category Record Deleted";
+        return "ProductCategory with ID: " + categoryId + " is deleted successfully.";
     }
 
     @Override
@@ -65,4 +60,3 @@ public class ProductCategoryServiceImp implements IProductCategoryService {
         return repo.deleteByName(name);
     }
 }
-

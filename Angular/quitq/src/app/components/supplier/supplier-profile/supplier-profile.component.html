@@ -1,0 +1,45 @@
+
+<div class="customer-profile-container">
+    <!-- Image Circle and Name -->
+    <div class="profile-header">
+      <div class="profile-image">
+        <img [src]="female" alt="Customer Image" />
+      </div>
+      <h2>{{ supplier.name || 'supplier Name' }}</h2>
+    </div>
+  
+    <!-- Main Navigation Tabs -->
+    <div class="profile-navigation">
+      <button (click)="selectSection('profile')" [class.active]="selectedSection === 'profile'">
+        My Profile
+      </button>
+      <button (click)="selectSection('favorites')" [class.active]="selectedSection === 'favorites'">
+        My Favorites
+      </button>
+    </div>
+  
+    <!-- My Profile Section -->
+    <div *ngIf="selectedSection === 'profile'" class="profile-section">
+      <!-- Sub Navigation for My Profile -->
+      <div class="profile-navigation">
+        <button (click)="selectSubSection('basic')" [class.active]="selectedSubSection === 'basic'">
+          Basic Information
+        </button>
+      </div>
+  
+      <!-- Basic Information Content -->
+      <div *ngIf="selectedSubSection === 'basic'" class="info-section">
+        <div class="info-row"><strong>Email:</strong> {{ supplier.email }}</div>
+        <div class="info-row"><strong>Phone:</strong> {{ supplier.mobileNumber }}</div>
+        <div class="info-row"><strong>Address:</strong> {{ supplier.address }}</div>
+        <div class="info-row"><strong>CompanyName:</strong> {{ supplier.companyName }}</div>
+      </div>
+    </div>
+  
+    <!-- My Favorites Section -->
+    <div *ngIf="selectedSection === 'favorites'" class="favorites-section">
+      <h3>My Favorites</h3>
+      <p>Favorites functionality will be added here.</p>
+    </div>
+  </div>
+  

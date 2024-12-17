@@ -1,5 +1,4 @@
-
- /* author : Yadnesh Shewale
+/* author : Yadnesh Shewale
  * date : 02/11/2024
  * description : inventory entity class is created
  */
@@ -18,7 +17,7 @@ import jakarta.persistence.Table;
 public class Inventory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")  // Maps to "inventory_id" column in the DB
     private int inventoryId;
 
@@ -29,15 +28,16 @@ public class Inventory {
 
     private double stockValue;
 
-    @Column(name = "status", nullable = false, length = 20)  
+    @Column(name = "status", nullable = false, length = 20)
     private String status;
 
-    
+    // Default constructor
     public Inventory() {
         super();
     }
 
-    public Inventory(int inventoryId, int productId, int stockQuantity, double stockValue, String location, String status) {
+    // Parameterized constructor
+    public Inventory(int inventoryId, int productId, int stockQuantity, double stockValue, String status) {
         super();
         this.inventoryId = inventoryId;
         this.productId = productId;
@@ -46,6 +46,7 @@ public class Inventory {
         this.status = status;
     }
 
+    // Getters and setters
     public int getInventoryId() {
         return inventoryId;
     }
@@ -77,7 +78,6 @@ public class Inventory {
     public void setStockValue(double stockValue) {
         this.stockValue = stockValue;
     }
-
 
     public String getStatus() {
         return status;

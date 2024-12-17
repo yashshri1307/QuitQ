@@ -1,15 +1,14 @@
 /* author : Yadnesh Shewale
- * date : 02/11/2024
- * description : orders entity class is created 
+ * date : 13/12/2024
+ * description : Orders entity class with necessary fields and mapping.
  */
 
 package com.hexaware.quitq.entities;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime; // For TIMESTAMP
+import java.time.LocalDateTime;
 import jakarta.validation.constraints.NotNull;
-
 
 @Entity
 @Table(name = "orders")
@@ -21,23 +20,21 @@ public class Orders {
     private int orderId;
 
     @Column(name = "customer_id", nullable = false)
-    private int customerId;  // Assuming Customer is another entity with a customerId
+    private int customerId;
 
     @Column(name = "order_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", updatable = false)
-    private LocalDateTime orderDate; // Using LocalDateTime to represent TIMESTAMP
+    private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, columnDefinition = "ENUM('pending', 'shipped', 'delivered', 'canceled') DEFAULT 'pending'")
-    private OrderStatus status = OrderStatus.PENDING; // Default status is 'pending'
+    private OrderStatus status = OrderStatus.PENDING;
 
     @Column(name = "total_amount", nullable = false)
     @NotNull
     private BigDecimal totalAmount;
 
-    // Constructors
-    public Orders() {
-        super();
-    }
+    // Constructors, Getters, and Setters
+    public Orders() {}
 
     public Orders(int customerId, LocalDateTime orderDate, OrderStatus status, BigDecimal totalAmount) {
         this.customerId = customerId;
@@ -46,7 +43,6 @@ public class Orders {
         this.totalAmount = totalAmount;
     }
 
-    // Getters and Setters
     public int getOrderId() {
         return orderId;
     }
@@ -87,13 +83,6 @@ public class Orders {
         this.totalAmount = totalAmount;
     }
 
-    @Override
-    public String toString() {
-        return "Order [orderId=" + orderId + ", customerId=" + customerId + ", orderDate=" + orderDate +
-               ", status=" + status + ", totalAmount=" + totalAmount + "]";
-    }
-
-    // Enum for Order Status
     public enum OrderStatus {
         PENDING,
         SHIPPED,

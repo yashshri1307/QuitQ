@@ -14,11 +14,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.hexaware.quitq.dto.InventoryDTO;
 import com.hexaware.quitq.entities.Inventory;
 import com.hexaware.quitq.service.IInventoryService;
 
 @RestController
-@RequestMapping("/api/inventories")
+@RequestMapping("/api/inventory")
 public class InventoryRestController {
 
     @Autowired
@@ -27,31 +28,48 @@ public class InventoryRestController {
     Logger logger = LoggerFactory.getLogger(InventoryRestController.class);
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Inventory> insertInventory(@RequestBody Inventory inventory) {
+    public ResponseEntity<InventoryDTO> insertInventory(@RequestBody InventoryDTO inventoryDTO) {
         logger.info("insertInventory is called");
 
-        if (validateInventory(inventory)) {
-            Inventory savedInventory = service.addInventory(inventory);
-            return new ResponseEntity<>(savedInventory, HttpStatus.CREATED);
-        } else {
-            logger.error("Failed to add inventory: Invalid data");
+        Inventory inventory = convertToEntity(inventoryDTO);
+        Inventory savedInventory = service.addInventory(inventory);
+        InventoryDTO savedInventoryDTO = convertToDTO(savedInventory);
+        return new ResponseEntity<>(savedInventoryDTO, HttpStatus.CREATED);
+    }
+    
+    @PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<InventoryDTO> updateInventory(@RequestBody InventoryDTO inventoryDTO) {
+        logger.info("updateInventory is called with ID: " + inventoryDTO.getInventoryId());
+
+        if (inventoryDTO.getInventoryId() == 0) {
+            logger.error("Invalid Inventory ID: ID cannot be zero or null");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
+
+        Inventory inventory = convertToEntity(inventoryDTO);
+        Inventory updatedInventory = service.updateInventory(inventory);
+        InventoryDTO updatedInventoryDTO = convertToDTO(updatedInventory);
+        return new ResponseEntity<>(updatedInventoryDTO, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventory) {
-        logger.info("updateInventory is called");
-        Inventory updatedInventory = service.updateInventory(inventory);
-        return new ResponseEntity<>(updatedInventory, HttpStatus.OK);
-    }
+
+//    @PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+//    public ResponseEntity<InventoryDTO> updateInventory(@RequestBody InventoryDTO inventoryDTO) {
+//        logger.info("updateInventory is called");
+//
+//        Inventory inventory = convertToEntity(inventoryDTO);
+//        Inventory updatedInventory = service.updateInventory(inventory);
+//        InventoryDTO updatedInventoryDTO = convertToDTO(updatedInventory);
+//        return new ResponseEntity<>(updatedInventoryDTO, HttpStatus.OK);
+//    }
 
     @GetMapping(value = "/getbyid/{inventoryId}", produces = "application/json")
-    public ResponseEntity<Inventory> getInventoryById(@PathVariable int inventoryId) {
+    public ResponseEntity<InventoryDTO> getInventoryById(@PathVariable int inventoryId) {
         logger.info("getInventoryById is called for id: " + inventoryId);
         Inventory inventory = service.getInventoryById(inventoryId);
         if (inventory != null) {
-            return new ResponseEntity<>(inventory, HttpStatus.OK);
+            InventoryDTO inventoryDTO = convertToDTO(inventory);
+            return new ResponseEntity<>(inventoryDTO, HttpStatus.OK);
         } else {
             logger.warn("Inventory not found for id: " + inventoryId);
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -59,138 +77,42 @@ public class InventoryRestController {
     }
 
     @GetMapping(value = "/getall", produces = "application/json")
-    public ResponseEntity<List<Inventory>> getAll() {
+    public ResponseEntity<List<InventoryDTO>> getAll() {
         logger.info("getAll is called");
         List<Inventory> inventories = service.getAllInventory();
-        return new ResponseEntity<>(inventories, HttpStatus.OK);
+        List<InventoryDTO> inventoriesDTO = inventories.stream()
+                                                       .map(this::convertToDTO)
+                                                       .toList();
+        return new ResponseEntity<>(inventoriesDTO, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/deletebyid/{inventoryId}", produces = "application/json")
     public ResponseEntity<String> deleteById(@PathVariable int inventoryId) {
         logger.warn("deleteById is called for id: " + inventoryId);
+
+        // Check if inventoryId is valid
+        if (inventoryId <= 0) {
+            logger.error("Invalid Inventory ID: " + inventoryId);
+            return new ResponseEntity<>("Invalid ID provided", HttpStatus.BAD_REQUEST);
+        }
+
         String result = service.deleteInventoryById(inventoryId);
+        if (result.contains("Inventory not found")) {
+            logger.warn("Inventory not found for id: " + inventoryId);
+            return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
+        }
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/getbyproductid/{productId}", produces = "application/json")
-    public ResponseEntity<List<Inventory>> getByProductId(@PathVariable int productId) {
-        logger.info("getByProductId is called for productId: " + productId);
-        List<Inventory> inventories = service.getByProductId(productId);
-        return new ResponseEntity<>(inventories, HttpStatus.OK);
+
+    private InventoryDTO convertToDTO(Inventory inventory) {
+        return new InventoryDTO(inventory.getInventoryId(), inventory.getProductId(),
+                inventory.getStockQuantity(), inventory.getStockValue(), inventory.getStatus());
     }
 
-    @GetMapping(value = "/getbystatus/{status}", produces = "application/json")
-    public ResponseEntity<List<Inventory>> getByStatus(@PathVariable String status) {
-        logger.info("getByStatus is called for status: " + status);
-        List<Inventory> inventories = service.getByStatus(status);
-        return new ResponseEntity<>(inventories, HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/getbystockquantitygt/{quantity}", produces = "application/json")
-    public ResponseEntity<List<Inventory>> getByStockQuantityGreaterThan(@PathVariable int quantity) {
-        logger.info("getByStockQuantityGreaterThan is called for quantity > " + quantity);
-        List<Inventory> inventories = service.getByStockGreaterThan(quantity);
-        return new ResponseEntity<>(inventories, HttpStatus.OK);
-    }
-
-    @DeleteMapping(value = "/deletebyproductid/{productId}", produces = "application/json")
-    public ResponseEntity<String> deleteByProductId(@PathVariable int productId) {
-        logger.warn("deleteByProductId is called for productId: " + productId);
-        int count = service.deleteByProductId(productId);
-        return new ResponseEntity<>(count + " record(s) deleted", HttpStatus.OK);
-    }
-
-    // Utility method to validate Inventory object
-    private boolean validateInventory(Inventory inventory) {
-        return inventory != null && inventory.getProductId() != 0 && inventory.getStockQuantity() >= 0;
+    private Inventory convertToEntity(InventoryDTO inventoryDTO) {
+        return new Inventory(inventoryDTO.getInventoryId(), inventoryDTO.getProductId(),
+                inventoryDTO.getStockQuantity(), inventoryDTO.getStockValue(), inventoryDTO.getStatus());
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*package com.hexaware.ecommerce.controller;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import com.hexaware.ecommerce.entities.Inventory;
-import com.hexaware.ecommerce.services.IInventoryService;
-
-@RestController
-@RequestMapping("/api/inventories")
-public class InventoryController {
-
-    @Autowired
-    IInventoryService service;
-
-    @PostMapping("/add")
-    public Inventory insertInventory(@RequestBody Inventory inventory) {
-        return service.addInventory(inventory);
-    }
-
-    @PutMapping("/update")
-    public Inventory updateInventory(@RequestBody Inventory inventory) {
-        return service.updateInventory(inventory);
-    }
-
-    @GetMapping("/getbyid/{inventoryId}")
-    public Inventory getInventoryById(@PathVariable int inventoryId) {
-        return service.getInventoryById(inventoryId);
-    }
-
-    @GetMapping("/getall")
-    public List<Inventory> getAll() {
-        return service.getAllInventory();
-    }
-
-    @DeleteMapping("/deletebyid/{inventoryId}")
-    public String deleteById(@PathVariable int inventoryId) {
-        return service.deleteInventoryById(inventoryId);
-    }
-
-    @GetMapping("/getbyproductid/{productId}")
-    public List<Inventory> getByProductId(@PathVariable int productId) {
-        return service.getByProductId(productId);
-    }
-
-    @GetMapping("/getbystatus/{status}")
-    public List<Inventory> getByStatus(@PathVariable String status) {
-        return service.getByStatus(status);
-    }
-
-    @GetMapping("/getbystockquantitygt/{quantity}")
-    public List<Inventory> getByStockQuantityGreaterThan(@PathVariable int quantity) {
-        return service.getByStockGreaterThan(quantity);
-    }
-
-    @DeleteMapping("/deletebyproductid/{productId}")
-    public String deleteByProductId(@PathVariable int productId) {
-        int count = service.deleteByProductId(productId);
-        return count + " record(s) deleted";
-    }
-}
-*/

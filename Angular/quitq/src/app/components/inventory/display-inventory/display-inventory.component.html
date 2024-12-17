@@ -1,0 +1,53 @@
+
+<div class="inventory-container">
+    <h2 class="text-center mb-4">Inventory List</h2>
+    <table class="inventory-table table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Stock Quantity</th>
+          <th>Stock Value</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inventory of inventories">
+          <td>{{ inventory.inventoryId }}</td>
+          <td>{{ inventory.stockQuantity }}</td>
+          <td>{{ inventory.stockValue }}</td>
+          <td>{{ inventory.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
+
+<!-- <div class="inventory-container">
+    <h2>Inventory List</h2>
+    <table class="inventory-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Stock Quantity</th>
+          <th>Stock Value</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let inventory of inventories; let i = index"
+          [class.odd-row]="i % 2 === 0"
+          [class.even-row]="i % 2 !== 0"
+        >
+          <td>{{ inventory.id }}</td>
+          <td>{{ inventory.productName || 'N/A' }}</td>
+          <td>{{ inventory.stockQuantity }}</td>
+          <td>{{ inventory.stockValue }}</td>
+          <td>{{ inventory.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   -->

@@ -1,0 +1,23 @@
+<div class="orders-container">
+    <h1>My Orders</h1>
+  
+    <!-- Iterate over the orders array -->
+    <div class="order" *ngFor="let order of orders">
+      <div class="order-id">
+        <strong>Order ID:</strong> {{ order.id }}
+      </div>
+      <div class="order-status">
+        <strong>Status:</strong> <span class="status">{{ order.status }}</span>
+      </div>
+      <div class="order-date">
+        <strong>Date:</strong> {{ order.date }}
+      </div>
+      <div class="order-total">
+        <strong>Total Amount:</strong> ₹{{ order.total }}
+      </div>
+      <div class="view-details">
+        <button (click)="viewOrderDetails(order.id)">View Details</button>
+      </div>
+    </div>
+  </div>
+  

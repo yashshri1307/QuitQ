@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <h2>Orders</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer ID</th>
+          <th>Order Date</th>
+          <th>Status</th>
+          <th>Total Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.customerId }}</td>
+          <td>{{ order.orderDate }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.totalAmount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

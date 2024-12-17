@@ -29,7 +29,7 @@ public class ProductRestController {
 	@Autowired
 	IProductService service;
 	
-	@PostMapping("/addproduct")
+	@PostMapping("/add")
 	public Product addproduct(@RequestBody ProductDTO productDTO)
 	{
 		return service.addProduct(productDTO);
@@ -47,13 +47,19 @@ public class ProductRestController {
 		return service.getAllProducts();
 	}
 	
+	@PutMapping("/updateproduct/{id}")
+	public Product updateproductById(@PathVariable Integer id,@RequestBody ProductDTO productDTO)
+	{
+		return service.updateProductById(id,productDTO);
+	}
+	
 	@PutMapping("/updateproduct")
 	public Product updateproduct(@RequestBody ProductDTO productDTO)
 	{
 		return service.updateProduct(productDTO);
 	}
 	
-	@DeleteMapping("/deleteproduct/{id}")
+	@DeleteMapping("/delete/{id}")
 	public String deleteproductById(@PathVariable Integer id)
 	{
 		return service.deleteProductById(id);

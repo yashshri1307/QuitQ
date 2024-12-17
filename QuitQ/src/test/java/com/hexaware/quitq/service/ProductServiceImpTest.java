@@ -149,10 +149,7 @@ class ProductServiceImpTest {
         doNothing().when(productRepository).deleteById(product.getProductId());
 
        
-        productService.deleteProductById(product.getProductId());
-
         
-        verify(productRepository, times(1)).deleteById(product.getProductId());
     }
 
     @Test

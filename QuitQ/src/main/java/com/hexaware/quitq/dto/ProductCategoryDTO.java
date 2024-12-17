@@ -1,8 +1,6 @@
-
-
 /* author : Yadnesh Shewale
- * date : 02/11/2024
- * description : product category dto class is created 
+ * date : 13/12/2024
+ * description : ProductCategoryDTO class for data transfer between layers.
  */
 package com.hexaware.quitq.dto;
 
@@ -20,17 +18,18 @@ public class ProductCategoryDTO {
     @Size(min = 5, max = 200, message = "Product description must be between 5 and 200 characters")
     private String description;
 
+    // Default constructor
     public ProductCategoryDTO() {
-        super();
     }
 
+    // Parameterized constructor
     public ProductCategoryDTO(int categoryId, String name, String description) {
-        super();
         this.categoryId = categoryId;
         this.name = name;
         this.description = description;
     }
 
+    // Getters and Setters
     public int getCategoryId() {
         return categoryId;
     }

@@ -42,6 +42,7 @@ public class ProductServiceImp implements IProductService {
       product.setPrice(productDTO.getPrice());
       product.setStock(productDTO.getStock());
       product.setDescription(productDTO.getDescription());
+      product.setImageUrl(productDTO.getImageUrl());
         return repo.save(product);
     }
 
@@ -60,7 +61,8 @@ public class ProductServiceImp implements IProductService {
         product.setPrice(productDTO.getPrice());
         product.setStock(productDTO.getStock());
         product.setDescription(productDTO.getDescription());
-        		
+        product.setImageUrl(productDTO.getImageUrl());
+        
         return repo.save(product);
     }
 
@@ -72,7 +74,10 @@ public class ProductServiceImp implements IProductService {
 
     @Override
     public List<Product> getAllProducts() {
-        return repo.findAll();
+        
+        List<Product> products = repo.findAll(); 
+        
+        return products;
     }
 
     @Override
@@ -96,4 +101,38 @@ public class ProductServiceImp implements IProductService {
 
     		return repo.findByNameContainingIgnoreCase(name);
     }
+
+    @Override
+    public Product updateProductById(Integer id, ProductDTO productDTO) {
+
+        // Check if productDTO is null
+        if (productDTO == null) {
+            throw new IllegalArgumentException("ProductDTO cannot be null");
+        }
+        System.out.println("i am coming");
+
+        // Fetch the product using the provided ID
+        Product product = repo.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Product with ID " + id + " not found"));
+        System.out.println("product fetch="+product);
+        // Fetch the supplier based on the supplier ID in productDTO
+        
+        Integer supplierId = product.getSupplier() != null ? product.getSupplier().getSupplierId() : null;
+        
+        Supplier supplier = supplierrepo.findById(supplierId)
+                .orElseThrow(() -> new SupplierNotFoundException("Supplier with ID " + productDTO.getSupplierId() + " not found"));
+        System.out.println("supplier fetch="+supplier);
+        // Update product fields with data from productDTO
+        product.setSupplier(supplier);
+        product.setName(productDTO.getName());
+        product.setCategoryId(productDTO.getCategoryId());
+        product.setPrice(productDTO.getPrice());
+        product.setStock(productDTO.getStock());
+        product.setDescription(productDTO.getDescription());
+        product.setImageUrl(productDTO.getImageUrl());
+
+        // Save the updated product and return it
+        return repo.save(product);
+    }
+
 }

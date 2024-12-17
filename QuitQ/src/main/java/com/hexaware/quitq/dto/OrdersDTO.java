@@ -1,15 +1,12 @@
 /* author : Yadnesh Shewale
- * date : 02/11/2024
- * description : orders dto class is created 
+ * date : 13/12/2024
+ * description : Orders DTO class is created with necessary fields and conversion methods.
  */
-
 
 package com.hexaware.quitq.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
-/* author : Yadnesh Shewale */
 
 public class OrdersDTO {
 

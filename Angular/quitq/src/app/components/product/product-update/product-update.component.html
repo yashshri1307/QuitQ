@@ -1,0 +1,56 @@
+
+<div class="product-update-container">
+  <h2>Update Product</h2>
+
+  <!-- Input for Product ID -->
+  <div class="product-id-field">
+    <label>Enter Product ID:</label>
+    <input type="number" [(ngModel)]="productId" placeholder="Enter product ID" />
+    <button (click)="fetchProductById()">Fetch Product</button>
+  </div>
+
+  <!-- Product Details (editable fields) -->
+  <div *ngIf="product && product.name" class="product-details">
+    <!-- Product Name -->
+    <div class="product-field">
+      <label>Name:</label>
+      <div *ngIf="!editMode.name; else nameEdit">
+        <span>{{ product.name }}</span>
+        <img src="assets/edit-icon.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('name')" />
+      </div>
+      <ng-template #nameEdit>
+        <input [(ngModel)]="updatedProduct.name" />
+      </ng-template>
+    </div>
+
+    <!-- Product Description -->
+    <div class="product-field">
+      <label>Description:</label>
+      <div *ngIf="!editMode.description; else descriptionEdit">
+        <span>{{ product.description }}</span>
+        <img src="assets/edit-icon.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('description')" />
+      </div>
+      <ng-template #descriptionEdit>
+        <input [(ngModel)]="updatedProduct.description" />
+      </ng-template>
+    </div>
+
+    <!-- Product Price -->
+    <div class="product-field">
+      <label>Price:</label>
+      <div *ngIf="!editMode.price; else priceEdit">
+        <span>{{ product.price }}</span>
+        <img src="assets/edit-icon.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('price')" />
+      </div>
+      <ng-template #priceEdit>
+        <input type="number" [(ngModel)]="updatedProduct.price" />
+      </ng-template>
+    </div>
+
+    <!-- Submit Button -->
+    <button (click)="submit()">Submit</button>
+  </div>
+
+  <!-- Error Message -->
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>

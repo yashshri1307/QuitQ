@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/productcategories")
+@RequestMapping("/api/productcategory")
 public class ProductCategoryRestController {
 
     @Autowired
@@ -56,7 +56,10 @@ public class ProductCategoryRestController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
-
+    
+    
+    // below one line is added 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/getall", produces = "application/json")
     public ResponseEntity<List<ProductCategory>> getAll() {
         logger.info("getAll is called");

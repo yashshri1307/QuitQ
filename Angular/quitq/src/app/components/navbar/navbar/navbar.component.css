@@ -1,0 +1,120 @@
+/* Navbar Customization */ 
+.navbar-custom {
+    background-color: #ffffff; /* Light Gray Background */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure space is distributed between items */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.logo {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    background-color: transparent; /* Removes any background color */
+    border: none; /* Removes any border */
+    padding-left: 23px; /* Removes any padding */
+    margin: 0px; /* Removes any margin */
+}
+
+.search-container {
+    position: relative;
+    width: 758px; /* Set the width of the search bar */
+}
+
+.search-bar {
+    width: 100%; /* The search bar will fill the container */
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 25px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.search-bar::placeholder {
+    font-size: 1.1em;
+    color: #888;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Adjust the navigation items to stay aligned */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Push items to the right */
+}
+
+.navbar-nav li {
+    margin-left: 20px;
+}
+
+/* Account Icon with Login Button */
+.nav-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; 
+}
+
+.nav-item i {
+    margin-right: 5px; /* Space between icon and text */
+    font-size: 1.5em;
+}
+
+
+
+/* Cart Icon */
+.nav-item i {
+    font-size: 1.8em;
+}
+
+.cart-text {
+    font-size: 1.2em;
+    margin-left: 5px;
+    font-weight: 600;
+    
+}
+
+
+/* Adjusting Navbar items' alignment */
+.navbar-nav li {
+    margin-left: 20px;
+}
+
+.become-seller-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+    border-radius: 5px; /* Slightly rounded corners */
+    border: 0px solid #007bff; /* Light blue border */
+    color: #ffffff; /* Blue text */
+    background-color: transparent; /* Transparent background */
+    text-align: center;
+    text-decoration: none;
+    width: 16px;
+}
+.become-seller2-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+    border-radius: 5px; /* Slightly rounded corners */
+    border: 0px solid #007bff; /* Light blue border */
+    color: #ffffff; /* Blue text */
+    background-color: transparent; /* Transparent background */
+    text-align: center;
+    text-decoration: none;
+    width: 56px;
+}

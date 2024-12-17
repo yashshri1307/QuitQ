@@ -11,6 +11,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +46,7 @@ public class CustomerServiceImp implements ICustomerService{
 		{
 			logger.warn("Already Exist");
 			
-			throw new CustomerAlreadyExistsException("Customer with email " + customerDTO.getEmail() + " already exists.");
+			throw new CustomerAlreadyExistsException("Customer with email  already exists.");
 		}
 		
 		logger.info(customerDTO + " is Added from Add Service");
@@ -130,4 +131,12 @@ public class CustomerServiceImp implements ICustomerService{
 		
 		return repo.save(customer);
 	}
+	
+	@Override
+	public String getUserRole(String username) {
+	    UserInfo user = userrepo.findByEmail(username)
+	            .orElseThrow(() -> new CustomerNotFoundException("Customer not found: " + username));
+	    return user.getRoles();
+	}
+
 }

@@ -1,0 +1,398 @@
+/* Navbar Customization */ 
+.navbar-custom {
+    background-color: #ffffff; /* Light Gray Background */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure space is distributed between items */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.logo {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    background-color: transparent; /* Removes any background color */
+    border: none; /* Removes any border */
+    padding-left: 12px; /* Removes any padding */
+    margin: 0px; /* Removes any margin */
+}
+
+.search-container {
+    position: relative;
+    width: 758px; /* Set the width of the search bar */
+}
+
+.search-bar {
+    width: 100%; /* The search bar will fill the container */
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 25px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.search-bar::placeholder {
+    font-size: 1.1em;
+    color: #888;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Adjust the navigation items to stay aligned */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Push items to the right */
+}
+
+.navbar-nav li {
+    margin-left: 20px;
+}
+
+/* Account Icon with Login Button */
+.nav-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; 
+}
+
+.nav-item i {
+    margin-right: 5px; /* Space between icon and text */
+    font-size: 1.5em;
+}
+
+/* Dropdown for Admin Login (Three Vertical Dots) */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0; /* Align the dropdown to the right of the parent */
+    left: unset; /* Unset the left alignment to avoid overflow */
+    min-width: 150px;  /* Reduce the width of the dropdown */
+    padding: 5px 10px;  /* Reduce padding */
+    z-index: 9999; /* Ensure the dropdown appears above other content */
+    text-align: center;  /* Center the "Admin Login" text */
+}
+
+.dropdown-item {
+    padding: 5px 10px;  /* Reduce padding for a more compact dropdown */
+    font-size: 14px;  /* Adjust font size */
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Cart Icon */
+.nav-item i {
+    font-size: 1.8em;
+}
+
+.cart-text {
+    font-size: 1.2em;
+    margin-left: 5px;
+    font-weight: 600;
+    
+}
+
+/* Become Seller Button */
+.become-seller-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+    border-radius: 5px; /* Slightly rounded corners */
+    border: 1px solid #007bff; /* Light blue border */
+    color: #007bff; /* Blue text */
+    background-color: transparent; /* Transparent background */
+    text-align: center;
+    text-decoration: none;
+}
+
+.become-seller-btn:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+    text-decoration: none;
+}
+
+/* Adjusting Navbar items' alignment */
+.navbar-nav li {
+    margin-left: 20px;
+}
+
+/* Full-width carousel container */
+.carousel-container {
+  position: relative;
+  width: 98.36%; /* Reduced width */
+  height: 200px; /* Adjust height as needed */
+  padding-top: 0px;
+  margin: auto; /* Center the carousel if width is reduced */
+  overflow: hidden; /* Ensure content stays inside the container */
+  background-color: #000; /* Black background */
+}
+
+/* Arrows on both sides */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background for arrows */
+  width: 30px; /* Adjust width for better visibility */
+  height: 30px; /* Adjust height */
+  line-height: 30px; /* Center text vertically */
+  text-align: center; /* Center text horizontally */
+  border-radius: 50%; /* Optional: Makes arrows circular */
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-arrow {
+  left: 0; /* Align with the container edge */
+}
+
+.right-arrow {
+  right: 0; /* Align with the container edge */
+}
+
+.arrow:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Add hover effect */
+  color: black;
+}
+
+  
+  /* Images within carousel */
+  .image-slider img {
+    display: none;
+    width: 100%;
+    height: 200px; /* Match the container height */
+    object-fit: cover;
+  }
+  
+  .image-slider img.active {
+    display: block;
+  }
+  
+  /* Content container below carousel */
+  .content-container {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  /* Filter section */
+  .filter-section {
+    width: 20%;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
+  }
+  
+  .filter-section h3 {
+    margin-bottom: 10px;
+  }
+  
+  .filter-section label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  /* Product display section */
+  .product-display {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .product-card {
+    width: calc(25% - 15px);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .product-card p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  /* Container for products */
+.product-display {
+  display: grid; /* Use CSS Grid */
+  grid-template-columns: repeat(5, 1fr); /* 5 equal columns per row */
+  gap: 20px; /* Gap between products */
+  padding: 10px;
+  justify-items: center; /* Center items horizontally */
+  align-items: start; /* Align items to the top */
+}
+
+/* Individual product card */
+.product-card {
+  display: flex;
+  flex-direction: column; /* Stack image, name, and price vertically */
+  align-items: center; /* Center-align content */
+  border: 1px solid #ccc; /* Add a light border */
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 240px; /* Set a fixed width for the cards */
+  text-align: center;
+}
+
+/* Product image styling */
+.product-card img {
+  width: 100%; /* Ensure image fits container */
+  height: 180px; /* Fixed height for uniformity */
+  object-fit: cover; /* Maintain aspect ratio and crop if needed */
+  border-radius: 4px;
+}
+
+/* Product name styling */
+.product-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+/* Product price styling */
+.product-price {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #555;
+}
+
+  /* Flexbox layout to align buttons horizontally */
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Distribute space between buttons */
+  gap: 10px; /* Space between the buttons */
+  margin-top: 10px; /* Space above buttons */
+}
+
+/* Style for the 'Add to Cart' button */
+.AddCart {
+  background-color: #f0a500; /* Dark Yellow */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  padding: 8px 15px; /* Add padding */
+  font-size: 14px; /* Adjust font size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.AddCart:hover {
+  background-color: #e68900; /* Darker yellow on hover */
+}
+
+/* Style for the 'Buy Now' button */
+.BuyNow {
+  background-color: #ff7f00; /* Orange */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  padding: 8px 15px; /* Add padding */
+  font-size: 14px; /* Adjust font size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.BuyNow:hover {
+  background-color: #e67100; /* Darker orange on hover */
+}
+
+/* Carousel Styles */
+.carousel {
+  width: 100%;
+  height: 0px; /* Adjust based on your needs */
+  background-color: white;
+  margin-bottom: 2px;
+  /* Add your carousel styling here */
+}
+
+/* Categories Section Styles */
+.categories-section {
+  display: flex;
+  justify-content: space-around;
+  align-items:flex-end;
+  background-color: white;
+  height: 151px; /* Adjust based on your needs */
+  padding: 0px 0;
+  padding-bottom: 5px;
+  overflow-x: auto; /* Allows horizontal scrolling if the screen is smaller */
+  margin-top: 1px;
+  margin-bottom: 3px;
+  white-space: nowrap; 
+  gap: 0;
+}
+
+.category-item {
+  height: 140px;
+  text-align:start;
+  width: 150px; /* Adjust the width of each category box */
+  margin: 0 10px; /* Space between items */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding-left: 8px;
+  padding-right: 8px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  transform: translateY(-5px); /* Slight hover effect */
+}
+
+.category-item img {
+  width: 100%;
+  height: 82%; /* Adjust image height */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.category-item span {
+  align-items: center;
+ display: flex;
+  display: block;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: #070707;
+  background-color: white;
+}
+

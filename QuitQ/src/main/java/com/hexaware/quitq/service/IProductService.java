@@ -18,6 +18,8 @@ public interface IProductService {
 	public List<Product> getAllProducts();
     
 	public Product updateProduct(ProductDTO productDTO);
+	
+	public Product updateProductById(Integer id,ProductDTO productDTO);
     
     public String deleteProductById(Integer id);
     

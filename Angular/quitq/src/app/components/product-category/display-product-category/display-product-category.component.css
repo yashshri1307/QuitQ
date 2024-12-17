@@ -1,0 +1,47 @@
+/* Container styles */
+.categories-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: #ffffff;
+  }
+  
+  /* Table styles */
+  .categories-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  .categories-table th,
+  .categories-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .categories-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .categories-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .categories-table {
+      font-size: 12px;
+    }
+  
+    .categories-container {
+      padding: 5px;
+    }
+  }
+  

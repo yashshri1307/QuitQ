@@ -1,0 +1,106 @@
+.container {
+  margin-top: 30px;
+}
+
+.card {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 10px;
+  background-color: #e2f7f2; /* Light teal background for card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  border: none;
+  margin-bottom: 30px; /* Adds more space between cards */
+  padding: 20px; /* Adds padding inside cards */
+  height: 100%; /* Ensures cards take full height */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Zoom effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhances the shadow effect on hover */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333; /* Darker text for contrast */
+}
+
+.card-text {
+  font-size: 1.1rem;
+  color: #555; /* Slightly lighter text color for description */
+}
+
+.clickable-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping of items */
+  justify-content: space-evenly; /* Ensures even spacing between cards */
+}
+
+.col-md-3 {
+  padding: 0 15px;
+  flex: 1 1 22%; /* Ensures each card takes up more space and adjusts dynamically */
+  max-width: 300px; /* Maximum width for each card */
+  margin: 10px; /* Adds margin around each card */
+}
+
+@media (max-width: 768px) {
+  .col-md-3 {
+    flex: 1 1 45%; /* Adjust for smaller screens */
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .col-md-3 {
+    flex: 1 1 90%; /* Stack cards on very small screens */
+    max-width: 90%;
+  }
+}
+
+
+
+
+
+
+/* .container {
+    margin-top: 30px;
+  }
+  
+  .card {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  .clickable-card {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .col-md-3 {
+    padding: 0 10px;
+  }
+   */
